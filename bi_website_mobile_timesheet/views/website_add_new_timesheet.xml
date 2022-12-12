@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<template id="bi_new_timesheet_form" name="Add New Timesheet Form">
+		
+		<t t-call="website.layout">
+			<div id="timesheet_body">
+				<div class="row">
+					<div class="container timesheet_breadcrumb">
+					    <ol class="breadcrumb mb0">
+					        <li class="breadcrumb-item">
+					            <a href="/my/timesheet" > My Timesheet</a>
+					        </li>
+					        <li class="breadcrumb-item active">
+					        	<span> New Timesheet</span>
+					        </li>
+					    </ol>
+					</div>
+				</div>
+
+				<div id="wrap"  class="container">
+		            <h1 class="text-center">
+		                New Timesheet
+		            </h1>
+
+		            <hr/>
+		            
+		            <form action="/my/new_timesheet_submit" method="post" id="new_timesheet_form">
+						<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+						<div class="row">
+							<div class="col-md-12 oe_cart">
+								<div class="row">
+									<div class="col-md-12 timesheet_center new_timesheet">
+										<div t-if="error_message" class="alert alert-danger">
+											<t t-foreach="error_message" t-as="err">
+												<t t-esc="err" />
+												<br/>
+											</t>
+										</div>
+
+										<div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''} col-lg-6 pull-left">
+											
+											 <label class="control-label" for="project">Project</label>
+                                            <t t-set="project_ids" t-value="website.get_project_details()"/>
+                                            <select class="form-control" name="project" required="required">
+                                            	<option value="">select...</option>
+                                                <t t-foreach="project_ids" t-as="project">
+                                                    <option t-att-value="project.id" t-att-selected="'selected' if project.id else null">
+                                                        <t t-esc="project.name" />
+                                                    </option>
+                                                </t>
+                                            </select>
+
+										</div>
+
+										<div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''} col-lg-6 pull-left">
+											
+											<label class="control-label" for="task">Task</label>
+                                            <select class="form-control" name="task" required="required">
+                                                <option value="">select...</option>
+                                                <t t-foreach="website.get_task_details()" t-as="task">
+                                                    <option t-att-value="task.id" style="display:none;" t-att-data-project="task.project_id.id" t-att-selected="task.id">
+                                                        <t t-esc="task.name" />
+                                                    </option>
+                                                </t>
+                                            </select>
+
+										</div>
+
+										<div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''} col-lg-6 pull-left">
+											
+											<label class="control-label" for="name">Date</label>
+											<input type="date" name="date" class="form-control" required="required"/>
+
+										</div>
+
+										<div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''} col-lg-6 pull-left">
+											
+											<label class="control-label" for="name">Work Types</label>
+											<select class="form-control" name="work_types" required="required">
+												<t t-foreach="website.get_work_types()" t-as="work">
+		                                            <option t-esc="work.work_type"/>
+			                                	</t>
+		                                    </select>
+
+										</div>
+
+										<div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''} col-lg-6 pull-left">
+											
+											<label class="control-label" for="name">Duration (Hours)</label>
+											<input type="text" name="duration" class="form-control" required="required"/>
+
+										</div>
+
+										<div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''} col-lg-6 pull-left">
+											
+											<label class="control-label" for="name">Start Time</label>
+											<input type="time" name="st_time" class="form-control" required="required"/>
+
+										</div>
+
+										<div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''} col-lg-6 pull-left">
+											
+											<label class="control-label" for="name">End Time</label>
+											<input type="time" name="ed_time" class="form-control" required="required"/>
+
+										</div>
+
+										<div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''} col-lg-6 pull-left">
+											
+										</div>
+
+										<div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''} col-lg-6 pull-left">
+											
+											<div class="pull-left">
+												<label class="control-label" for="is_billable">Is Billable</label>
+												<input type="checkbox" name="is_billable" style="vertical-align: text-bottom;"/>
+											</div>
+
+											<div class="right" style="display:inline-block;margin:0 20px;">
+												<label class="control-label" for="is_paid">Is Paid</label>
+												<input type="checkbox" name="is_paid" style="vertical-align: text-bottom;"/>
+											</div>
+
+										</div>
+
+										<div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''} col-lg-12 pull-left">
+											
+											<label class="control-label" for="name">Description</label>
+											<textarea name="disc" cols="40" rows="5" class="form-control" />
+
+										</div>
+
+										<div class="form-group  col-lg-12 pull-left">
+											<button type="submit" class="btn btn-default btn-primary mb32 a-submit">
+												Save
+											</button>
+										</div>
+
+									</div>
+											
+								</div>
+
+							</div>
+						</div>
+					</form>
+		        </div>
+			</div>
+		</t>
+
+	</template>
+
+	<template id="timesheet_added" name="Timesheet Add successfully">
+		
+		<t t-call="website.layout">
+			<div id="wrap">
+				<div class="oe_structure" />
+				<div class="container">
+					<h1 class="text-center">Thank you!</h1>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="alert alert-success">
+								Your Timesheet Added Successfully.
+								<button type="button" class="close" data-dismiss="alert">&amp;times;
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="oe_structure" />
+			</div>
+		</t>
+
+	</template>
+
+	<template id="timesheet_failed" name="Timesheet Failed">
+		
+		<t t-call="website.layout">
+			<div id="wrap">
+				<div class="oe_structure" />
+				<div class="container">
+					<h1 class="text-center">Sorry there is something wrong.</h1>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="alert alert-success">
+								please try again.
+								<button type="button" class="close" data-dismiss="alert">&amp;times;
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="oe_structure" />
+			</div>
+		</t>
+
+	</template>
+
+</odoo>

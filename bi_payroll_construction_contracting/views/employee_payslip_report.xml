@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+	<record id="employee_payslip_report_id" model="ir.actions.report">
+        <field name="name">Timecard Payslip Report</field>
+        <field name="model">hr.payslip</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">bi_payroll_construction_contracting.employee_payslip_temp_id</field>
+        <field name="report_file">bi_payroll_construction_contracting.employee_payslip_temp_id</field>
+        <field name="print_report_name">('Timecard Payslip Report')</field>
+        <field name="binding_model_id" ref="model_hr_payslip"/>
+        <field name="binding_type">report</field>
+    </record>
+	
+
+	<record id="payroll_payslip_report_id" model="ir.actions.report">
+        <field name="name">Employee Payslip Report</field>
+        <field name="model">hr.payslip</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">bi_payroll_construction_contracting.id_payroll_payslip</field>
+        <field name="report_file">bi_payroll_construction_contracting.id_payroll_payslip</field>
+        <field name="print_report_name">('Employee Payslip Report')</field>
+        <field name="binding_model_id" ref="model_hr_payslip"/>
+        <field name="binding_type">report</field>
+    </record>
+	
+
+	<record id="payroll_timecard_report_id" model="ir.actions.report">
+        <field name="name">Timecard Report</field>
+        <field name="model">hr_timesheet_sheet.sheet</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">bi_payroll_construction_contracting.payroll_timecard_temp_id</field>
+        <field name="report_file">bi_payroll_construction_contracting.payroll_timecard_temp_id</field>
+        <field name="print_report_name">('Timecard Report')</field>
+        <field name="binding_model_id" ref="model_hr_timesheet_sheet_sheet"/>
+        <field name="binding_type">report</field>
+    </record>
+			
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_overtime_request_hr,access.overtime.request.hr,bi_hr_overtime_request_comm.model_overtime_request,bi_hr_overtime_request_comm.hr_manager_overtime_id,1,1,1,1
+access_overtime_request_dept,access.overtime.request.dept,bi_hr_overtime_request_comm.model_overtime_request,bi_hr_overtime_request_comm.dept_manager_overtime_id,1,1,1,1
+access_overtime_request_user,access.overtime.request.user,bi_hr_overtime_request_comm.model_overtime_request,bi_hr_overtime_request_comm.group_show_req,1,1,1,1
+access_overtime_request_multiple_user,access.multiple.overtime.request.user,bi_hr_overtime_request_comm.model_multiple_overtime_request,base.group_user,1,1,1,1

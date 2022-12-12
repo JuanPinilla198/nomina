@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_payroll_cancel_wizard_user,access_payroll_cancel_wizard,model_payroll_cancel_wizard,,1,1,1,1
+access_payroll_window,access_payroll_window,model_payroll_payroll_window,,1,1,1,1
+access_payroll_window_wizard,access_payroll_window_wizard,model_payroll_wizard_window,,1,1,1,1
+access_consolidate_documents,access_consolidate_documents,model_consolidate_documents,,1,1,1,1

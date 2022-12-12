@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_salary_rule_form_inherit_add_show_in_report" model="ir.ui.view">
+        <field name="name">hr_salary_rule_form_inherit_add_show_in_report</field>
+        <field name="model">hr.salary.rule</field>
+        <field name="inherit_id" ref="bi_hr_payroll.hr_salary_rule_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="//group/field[@name='active']" position="after">
+                <field name="dont_show_in_report" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

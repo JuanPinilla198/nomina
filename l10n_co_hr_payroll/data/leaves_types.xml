@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="eps_100_leave" model="hr.leave.type">
+        <field name="name">EPS</field>
+        <field name="sequence">1</field>
+        <field name="allocation_type">no</field>
+        <field name="validity_start">2000-01-01</field>
+    </record>
+
+    <record id="arl_leave" model="hr.leave.type">
+        <field name="name">incapacidad_ARL</field>
+        <field name="sequence">2</field>
+        <field name="allocation_type">no</field>
+        <field name="validity_start">2000-01-01</field>
+    </record>
+
+    <record id="inca_mat_leave" model="hr.leave.type">
+        <field name="name">EPS_maternidad</field>
+        <field name="sequence">10</field>
+        <field name="allocation_type">no</field>
+        <field name="validity_start">2000-01-01</field>
+    </record>
+
+    <record id="inca_pat_leave" model="hr.leave.type">
+        <field name="name">EPS_paternidad</field>
+        <field name="sequence">11</field>
+        <field name="allocation_type">no</field>
+        <field name="validity_start">2000-01-01</field>
+    </record>
+
+    <record id="inca_lut_leave" model="hr.leave.type">
+        <field name="name">luto</field>
+        <field name="sequence">12</field>
+        <field name="allocation_type">no</field>
+        <field name="validity_start">2000-01-01</field>
+    </record>
+
+    <record id="aus_no_remunerado" model="hr.leave.type">
+        <field name="name">AUSENCIA_NO_REMUNERADO</field>
+        <field name="allocation_type">no</field>
+        <field name="sequence">13</field>
+        <field name="validity_start">2000-01-01</field>
+    </record>
+
+    <record id="aus_vac_disfrute" model="hr.leave.type">
+        <field name="name">VACACIONES DE DISFRUTE</field>
+        <field name="allocation_type">no</field>
+        <field name="sequence">9</field>
+        <field name="validity_start">2000-01-01</field>
+    </record>
+
+</odoo>

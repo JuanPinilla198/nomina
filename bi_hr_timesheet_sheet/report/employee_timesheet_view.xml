@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="timesheet_sheet_custom">
+    <t t-call="web.external_layout">
+        <div class="page">
+            <t t-foreach="docs" t-as="o">
+                <div class="container">
+                    <div class="text-center">
+                        <h2 style="text-align:center;">Timesheet Sheet</h2><br/>
+                    </div> 
+                
+                    <div class="row">
+                        <h3><span t-field="o.employee_id.name"/></h3><br/>
+                    </div>
+                </div>
+                <table style="border-collapse: collapse;width: 100%;" class="table table-condensed">
+                    <thead>
+                            <tr>
+                                <th>Timesheet Period</th>
+                                <th>State</th>
+                            </tr>
+                    </thead>  
+                    <tbody class="components_tbody">
+                            <tr>
+                            <td>
+                                <span t-field="o.date_from" /> To <span t-field="o.date_to" />
+                            </td>
+                                <td>
+                                <span t-field="o.state" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2>Timesheet Lines : </h2><br/>
+                <table style="border-collapse: collapse;width: 100%;" class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Project</th>
+                            <th>Description</th>
+                            <th>Hours</th>
+                        </tr>
+                    </thead>  
+                    <tbody class="components_tbody">
+                        <t t-foreach="o.timesheet_ids" t-as="t">     
+                            <tr>
+                                <td>
+                                        <span t-field="t.date" />
+                                </td>
+                                <td>
+                                        <span t-field="t.project_id" />
+                                </td>
+                                <td>
+                                    <span t-field="t.name" />
+                                </td>
+                                <td>
+                                    <span t-field="t.unit_amount" />
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>    
+            </t>
+        </div>
+    </t>
+    </template>
+
+    <template id="timesheet_sheet_report">
+        <t t-call="web.html_container">
+<!--            <t t-foreach="doc_ids" t-as="o">-->
+                <t t-call="bi_hr_timesheet_sheet.timesheet_sheet_custom" />
+<!--            </t>-->
+        </t>
+    </template>
+</odoo>
+

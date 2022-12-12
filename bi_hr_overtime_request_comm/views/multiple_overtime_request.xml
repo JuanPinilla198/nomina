@@ -1,0 +1,135 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<odoo>
+
+	<record id="view_overtime_req_multi_tree" model="ir.ui.view">
+		<field name="name">multiple.overtime.request.tree</field>
+		<field name="model">multiple.overtime.request</field>
+		<field name="priority">2</field>
+		<field name="arch" type="xml">
+		<tree string="Multiple Overtime Request">
+	    	<field  name="employee_ids" widget="many2many_tags"/>
+	    	<field name="department_id"/>
+	    	<field name='include_in_payroll'/>
+	    	<field  name="num_of_hours"/>	     
+		</tree>
+		</field>
+    </record>
+
+
+    <record id="view_overtime_req_multi_form" model="ir.ui.view">
+	   	<field name="name">multiple.overtime.request.form</field>
+	   	<field name="model">multiple.overtime.request</field>
+	   	<field name="priority">2</field>
+	   	<field name="arch" type="xml">
+	    <form string="Multiple Overtime Request">
+	    	<header>
+	    	 	<button name="confirm_action" string="Confirm"
+                    	type="object" states="new"/>
+
+                <button name="first_approve_action" string="Approve"
+                    	type="object" states="first_approve" groups="bi_hr_overtime_request_comm.hr_manager_overtime_id"/>
+
+                <button name="dept_approve_action" string="Department Approve"
+                    	type="object" states="dept_approve" groups="bi_hr_overtime_request_comm.dept_manager_overtime_id"/>
+
+                <button name="refuse_action" string="Refuse"
+                    	type="object" states="first_approve,dept_approve"/>
+
+	    		<field name="state" widget="statusbar" statusbar_visible="new,first_approve,dept_approve,done"/>
+
+	    	</header>
+	    	<sheet>
+	    	<h2><field name="employee_ids" widget="many2many_tags" attrs="{'readonly' : [('state','!=','new')]}"/></h2>
+	    	<group>
+		    	<group>
+	     			<field name="start_date" attrs="{'readonly' : [('state','!=','new')]}"/>
+	     			<field  name="department_id" attrs="{'readonly' : [('state','!=','new')]}"/>
+	     			<field name="department_manager_id" attrs="{'readonly' : [('state','!=','new')]}"/>
+
+	     			<field  name="approve_date"/>
+	     			<field name="approve_by_id"/>
+	     			<field  name="num_of_hours"/>
+	    		</group>
+	    		<group>
+	     			<field name="end_date" attrs="{'readonly' : [('state','!=','new')]}"/>
+	     			<field  name="include_in_payroll" attrs="{'readonly' : [('state','!=','new')]}"/>
+	     			<field  name="dept_approve_date"/>
+	     			<field name="dept_manager_id"/>
+	    		</group>
+	    	</group>	
+	    	<notebook>
+	    		<page string="Notes">
+
+	    			<field  name="notes" attrs="{'readonly' : [('state','!=','new')]}"/>
+				</page>	
+			</notebook>	     
+	    </sheet>
+	 	</form>
+		</field>
+	</record>
+
+
+
+	<record id="overtime_req__multi_action" model="ir.actions.act_window">
+	  	<field name="name">Multiple Overtime Request</field>
+	  	<field name="type">ir.actions.act_window</field>
+	  	<field name="res_model">multiple.overtime.request</field>
+	  	<field name="binding_view_types">form</field>
+	  	<field name="view_mode">tree,form,kanban</field>
+	  	<field name="help" type="html">
+	   		<p class="oe_view_nocontent_create"> </p>
+	   		<p></p>
+	  	</field>
+	</record>
+
+
+	
+	
+	<menuitem action="overtime_req__multi_action" id="menu_overtime_multiple" parent="sub_menu_employee_overtime" name="Multiple Overtime Request" sequence="39" 
+		groups="bi_hr_overtime_request_comm.hr_manager_overtime_id,bi_hr_overtime_request_comm.dept_manager_overtime_id"/>
+
+
+
+	<record id="overtime_req__multi_action_hr" model="ir.actions.act_window">
+	  	<field name="name">Multiple Overtime Request To Approve</field>
+	  	<field name="type">ir.actions.act_window</field>
+	  	<field name="res_model">multiple.overtime.request</field>
+	  	<field name="binding_view_types">form</field>
+	  	<field name="view_mode">tree,form,kanban</field>
+	  	<field name="domain">[('state','=','first_approve')]</field>
+	  	<field name="help" type="html">
+	   		<p class="oe_view_nocontent_create"> </p>
+	   		<p></p>
+	  	</field>
+	</record>
+
+
+	
+	
+	<menuitem action="overtime_req__multi_action_hr" id="menu_overtime_multiple_hr" parent="sub_menu_employee_overtime" name="Multiple Overtime Request To Approve" sequence="44" 
+		groups="bi_hr_overtime_request_comm.hr_manager_overtime_id"
+		/>
+
+
+
+	<record id="overtime_req__multi_action_dept" model="ir.actions.act_window">
+	  	<field name="name">Overtime Request To Approve By Department</field>
+	  	<field name="type">ir.actions.act_window</field>
+	  	<field name="res_model">multiple.overtime.request</field>
+	  	<field name="binding_view_types">form</field>
+	  	<field name="view_mode">tree,form,kanban</field>
+	  	<field name="domain">[('state','=','dept_approve')]</field>
+	  	<field name="help" type="html">
+	   		<p class="oe_view_nocontent_create"> </p>
+	   		<p></p>
+	  	</field>
+	</record>
+
+	<menuitem action="overtime_req__multi_action_dept" id="menu_overtime_multiple_dept" parent="sub_menu_employee_overtime" name="Multiple Overtime Request To Approve By Department" sequence="44"
+	groups="bi_hr_overtime_request_comm.dept_manager_overtime_id"
+	 />
+
+
+
+
+</odoo>

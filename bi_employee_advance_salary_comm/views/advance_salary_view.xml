@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_advance_salary_req_tree" model="ir.ui.view">
+	   <field name="name">advance.salary.tree</field>
+	   <field name="model">advance.salary</field>
+	   <field name="priority">2</field>
+	   <field name="arch" type="xml">
+	    <tree string="Advance Expense">
+	     <field name="name"/>
+	     <field  name="employee_id"/>
+	     <field name="department_id"/>
+	     <field name='req_date'/>
+	      <field  name="req_amount"/>
+
+	      <field name="confirm_date"/>
+	     <field name='approve_date_department'/>
+	      <field  name="approve_date_hr"/>
+	      <field  name="approve_date_director"/>
+	      <field  name="paid_date"/>
+	      <field name="paid_amount"/>
+	     
+			     
+	    </tree>
+	   </field>
+        </record>
+
+		<!-- <record id="seq_advance" model="ir.sequence">
+            <field name="name">expense_sequencer</field>
+            <field name="code">advance.expense</field>
+            <field name="prefix">ADV-EXP/</field>
+            <field name="padding">4</field>
+        </record> -->
+
+        <record id="view_advance_salary_req_form" model="ir.ui.view">
+	   <field name="name">advance.salary.form</field>
+	   <field name="model">advance.salary</field>
+	   <field name="priority">2</field>
+	   <field name="arch" type="xml">
+	    <form string="Advance Expense">
+	    	 <header>
+	    		
+                <button name="action_confirm" string="Confirm"
+                    	type="object" states="draft" class="btn-primary"/>
+
+                <button name="action_approve_dept" string="Department Approve"
+                    	type="object" states="confirmed" class="btn-primary" groups="bi_employee_advance_salary_comm.dept_manager_advance_salary_id"/>
+
+                <button name="action_approve_hr" string="HR Approve"
+                    	type="object" states="approve_dept" class="btn-primary" groups="bi_employee_advance_salary_comm.hr_manager_advance_salary_id"/>
+
+                <button name="action_approve_director" string="Director Approve"
+                    	type="object" states="approve_hr" class="btn-primary" groups="bi_employee_advance_salary_comm.director_manager_advance_salary_id"/>
+                
+                <button name="action_done" string="Done"
+                    	type="object" states="paid" class="btn-primary"/>
+                
+                <button name="action_pay" string="Pay"  states="approve_director"
+                    	type="object" class="btn-primary" groups="bi_employee_advance_salary_comm.account_manager_advance_salary_id"/>
+               
+	    		<field name="state" widget="statusbar" statusbar_visible="draft,confirmed,approve_dept,approve_hr,approve_director,paid,done"/>
+	    	</header>
+	    	<sheet>
+	    		<h2><field name='employee_id' attrs="{'readonly':[('state','!=','draft')]}"/></h2>
+	    		<!-- <div class="oe_button_box">
+	    		<button name="action_jounral" type="object"  class="oe_stat_button" icon="fa-archive"
+	    			 attrs = "{'invisible':[('state','not in',['paid','done'])]}" >
+                      <strong>Journal</strong>
+                </button>
+           		 </div> -->
+	    	<group>
+	    		<group>
+	    			<field  name="req_date" attrs="{'readonly':[('state','!=','draft')]}"/>
+	    			<field  name="req_amount" attrs="{'readonly':[('state','!=','draft')]}"/>
+	    			<field  name="currency_id" />
+	    		</group>
+		    	
+	    		
+	    		<group>
+	     			<field name="department_id" attrs="{'readonly':[('state','!=','draft')]}"/>	     			
+	     			<field name="job_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+	     			<field name='department_manager_id' attrs="{'readonly':[('state','!=','draft')]}"/>
+	     			<field name="req_user_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+	    		</group>
+	    		<group>
+	     			<field name="confirm_date" attrs="{'readonly':[('state','!=','draft')]}"/>     			
+	     			<field name="approve_date_department" attrs="{'readonly':[('state','!=','draft')]}"/>
+	     			<field name="approve_date_hr" attrs="{'readonly':[('state','!=','draft')]}"/>     			
+	     			<field name="approve_date_director" attrs="{'readonly':[('state','!=','draft')]}"/>
+	     			<field name="paid_date" attrs="{'readonly':[('state','!=','draft')]}"/>
+	     			
+	    		</group>
+
+	    		<group>
+	     			<field name="confirm_by_id" attrs="{'readonly':[('state','!=','draft')]}"/>     			
+	     			<field name="depet_manager_approve_by_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+	     			<field name="hr_manager_id" attrs="{'readonly':[('state','!=','draft')]}"/>     			
+	     			<field name="director_id" attrs="{'readonly':[('state','!=','draft')]}"/> 
+	     			<field name="paid_by_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+	     			<field name="company_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+	     			
+	    		</group>
+	    	</group>
+	    	<notebook>
+	    		
+	    		<page string="Accounting Info">
+	    			<group>
+	    				<group>
+	    					<field name="partner_id" attrs="{'required':[('state','=','approve_director')],
+	    					'readonly': [('state','!=','approve_director')]}"/>
+	    					<field name="payment_method_id" attrs="{'required':[('state','=','approve_director')],
+	    					'readonly': [('state','!=','approve_director')]}"/>
+	    					<field name="payment_id"/>
+	    					
+	    					<field name="paid_amount"/>
+	    				</group>
+	    			</group>
+	    		</page>
+	    			
+			</notebook>	   
+			
+	     </sheet>
+	 </form>
+	</field>
+
+
+</record>
+	  <record id="advance_salary_req_action" model="ir.actions.act_window">
+	  <field name="name">Advance Salary Request</field>
+	  <field name="type">ir.actions.act_window</field>
+	  <field name="res_model">advance.salary</field>
+	  <field name="view_mode">tree,form,kanban</field>
+	  <field name="help" type="html">
+	   <p class="oe_view_nocontent_create"> </p>
+	   <p></p>
+	  </field>
+	</record>
+
+
+	
+	<menuitem  id="sub_menu_advance_salary" parent="hr.menu_hr_root" name="Advance Salary" sequence="20" />
+	<menuitem action="advance_salary_req_action" id="menu_advance_salary" parent="sub_menu_advance_salary" name="Advance Salary Request" sequence="29"/>
+
+
+	
+
+
+	  <record id="advance_salary_req_action_dept" model="ir.actions.act_window">
+	  <field name="name">Advance Salary Request Department</field>
+	  <field name="type">ir.actions.act_window</field>
+	  <field name="res_model">advance.salary</field>
+	  <field name="view_mode">tree,form,kanban</field>
+	  <field name="domain">[('state','=','confirmed')]</field>
+	  
+	  <field name="help" type="html">
+	   <p class="oe_view_nocontent_create"> </p>
+	   <p></p>
+	  </field>
+	</record>
+
+<menuitem action="advance_salary_req_action_dept" id="menu_advance_salary_dept" parent="sub_menu_advance_salary" name="Depertment Approvals" sequence="29" groups="bi_employee_advance_salary_comm.dept_manager_advance_salary_id"/>
+
+
+
+<record id="advance_salary_req_action_hr" model="ir.actions.act_window">
+	  <field name="name">Advance Salary Request HR</field>
+	  <field name="type">ir.actions.act_window</field>
+	  <field name="res_model">advance.salary</field>
+	  <field name="view_mode">tree,form,kanban</field>
+	  <field name="domain">[('state','=','approve_dept')]</field>
+	  <field name="help" type="html">
+	   <p class="oe_view_nocontent_create"> </p>
+	   <p></p>
+	  </field>
+	</record>
+
+<menuitem action="advance_salary_req_action_hr" id="menu_advance_salary_hr" parent="sub_menu_advance_salary" name="HR Approvals" sequence="29" groups="bi_employee_advance_salary_comm.hr_manager_advance_salary_id"/>
+
+
+<record id="advance_salary_req_action_director" model="ir.actions.act_window">
+	  <field name="name">Advance Salary Request Director</field>
+	  <field name="type">ir.actions.act_window</field>
+	  <field name="res_model">advance.salary</field>
+	  <field name="view_mode">tree,form,kanban</field>
+	  <field name="domain">[('state','=','approve_hr')]</field>
+	  <field name="help" type="html">
+	   <p class="oe_view_nocontent_create"> </p>
+	   <p></p>
+	  </field>
+	</record>
+
+<menuitem action="advance_salary_req_action_director" id="menu_advance_salary_director" parent="sub_menu_advance_salary" name="Director Approvals" sequence="29" groups="bi_employee_advance_salary_comm.director_manager_advance_salary_id"/>
+
+
+
+<record id="advance_salary_req_action_accountant" model="ir.actions.act_window">
+	  <field name="name">Advance Salary Request</field>
+	  <field name="type">ir.actions.act_window</field>
+	  <field name="res_model">advance.salary</field>
+	  <field name="view_mode">tree,form,kanban</field>
+	  <field name="domain">[('state','in',['approve_director','paid'])]</field>
+	  <field name="help" type="html">
+	   <p class="oe_view_nocontent_create"> </p>
+	   <p></p>
+	  </field>
+	</record>
+
+<menuitem action="advance_salary_req_action_accountant" id="menu_advance_salary_accountant" parent="account.menu_finance_receivables" name="Advance Salary Request" sequence="29" groups="bi_employee_advance_salary_comm.account_manager_advance_salary_id"/>
+
+</odoo>

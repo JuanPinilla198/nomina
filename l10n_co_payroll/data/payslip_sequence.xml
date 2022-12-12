@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="seq_salary_slip_adj_note" model="ir.sequence">
+            <field name="name">Adjustment Note Sequence</field>
+            <field name="code">adj.seq</field>
+            <field name="prefix">ADJ</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="seq_salary_slip_elim_note" model="ir.sequence">
+            <field name="name">Elimination Note Sequence</field>
+            <field name="code">elim.seq</field>
+            <field name="prefix">ELIM</field>
+            <field name="padding">3</field>
+        </record>
+    </data>
+
+    <data noupdate='1'>
+        <record id="adj_sequence" model="ir.config_parameter">
+            <field name="key">l10n_co_payroll.adj_sequence</field>
+            <field name="value" eval="ref('l10n_co_payroll.seq_salary_slip_adj_note')"/>
+        </record>
+
+        <record id="elim_sequence" model="ir.config_parameter">
+            <field name="key">l10n_co_payroll.elim_sequence</field>
+            <field name="value" eval="ref('l10n_co_payroll.seq_salary_slip_elim_note')"/>
+        </record>
+    </data>
+</odoo>

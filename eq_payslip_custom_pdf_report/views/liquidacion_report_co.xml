@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="liquidacion_report_co_document">
+			<t t-call="web.external_layout">
+			<div class="page" style="border:1px solid black;border-radius: 15px;font-size:13px">
+				<div class="container">	
+				<div class="row" align="center" style="border-radius: 15px 15px 0px 0px;border-bottom:1px solid black">
+				<div class="col-12">
+					<strong>DEPARTAMENTO DE GESTION HUMANA<br/>
+					LIQUIDACION CONTRATO INDIVIDUAL DE TRABAJO</strong>
+				</div>
+				</div>
+
+				<div class="row" style="border-bottom:1px solid black;margin-top:5px">
+					
+					<div class="col-6" >
+						<table class="table table-sm table-borderless">							
+							<body>
+							<tr>
+								<td>NOMBRES:</td>
+								<td><span t-field="o.employee_id.name"/></td>
+							</tr>
+							<tr>
+								<td>CEDULA:</td>
+								<td><span t-field="o.employee_id.identification_id"/></td>
+							</tr>
+							<tr>
+								<td>CODIGO:</td>
+								<td><span t-field="o.contract_id.name"/></td>
+							</tr>
+							<tr>
+								<td>CARGO: </td>
+								<td><span t-field="o.employee_id.job_id"/></td>
+							</tr>
+							<tr>
+								<td>SUCURSAL: </td>
+								<td><span t-field="o.contract_id.analytic_account_id"/></td>
+							</tr>
+							<tr>
+								<td>C. DE COSTOS :</td>
+								<td><span t-field="o.contract_id.analytic_account_id.code"/></td>
+							</tr>
+							
+							</body>
+						</table>
+					</div>
+					<div class="col-6" >
+						<table class="table table-sm table-borderless" >
+							<body>
+							<tr>
+								<td>FECHA DE INGRESO:</td>
+								<td><span t-field="o.contract_id.date_start"/></td>
+							</tr>
+							<tr>
+								<td>FECHA DE RETIRO:</td>
+								<td><span t-field="o.contract_id.date_end"/></td>
+							</tr>
+							<tr>
+								<td>SUELDO BASICO</td>
+								<td><span t-field="o.contract_id.wage"/></td>
+							</tr>
+							<tr>
+								<td>TIPO DE CONTRATO :</td>
+								<td><span t-field="o.contract_id.tipo_contrato"/></td>
+							</tr>
+							<!--tr>
+								<td>CLASE DE SALARIO: </td>
+								<td><span t-field="o.employee_id.resource_calendar_id"/></td>
+							</tr-->
+							<tr>
+								<td>MOTIVO DEL RETIRO :</td>
+								<td><span t-field="o.contract_id.retiro"/></td>
+							</tr>
+																			
+							</body>
+						</table>
+					</div>	
+
+					<!--div class="col-2" >
+						<table class="table table-sm table-borderless">
+							<body>
+							<tr>
+								<td>TOTAL DIAS:</td>
+								<td><span t-field="o.diff_days" /></td>
+							</tr>										
+							</body>
+						</table>
+					</div-->
+					
+									
+				</div>
+
+				<div class="p-2; row" align="center" style="border-bottom:1px solid black; line-height:25px">
+					<div class="col-12">
+						<strong>BASES PARA LIQUIDACION</strong>
+					</div>
+				</div>
+	
+				<div class="row" style="border-bottom:1px solid black;margin-top:5px">
+					
+					<div class="col-6" >
+					<span t-set="detail" t-value="o.get_payslip_data_1()" />
+					<span t-set="total_line_data" t-value="o.get_payslip_data_1(flag=1)" />
+						<table class="table table-sm ">
+							<body>
+							<tr>
+								<td>Fecha Causación</td>
+								<td><span t-field="o.contract_id.fecha_causada_retiro"/></td>
+							</tr>
+
+							<tr t-foreach="detail" t-as="each">
+								<td>
+									<span t-esc="each['income1'].name" />
+								</td>
+								<td>
+									<span t-if="each['income1']" t-esc="each['income1'].total" t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}"/>
+								</td>
+		
+							</tr>
+							</body>
+						</table>
+					</div>
+					<div class="col-6" >
+					<span t-set="detail" t-value="o.get_payslip_data_2()" />
+					<span t-set="total_line_data" t-value="o.get_payslip_data_2(flag=1)" />
+						<table class="table table-condensed " >
+							<body>
+								<tr t-foreach="detail" t-as="each">
+									<td>
+										<span t-esc="each['income2'].name" />
+									</td>
+									<td>
+										<span t-if="each['income2']" t-esc="each['income2'].total" t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}"/>
+									</td>
+			
+								</tr>												
+							</body>
+						</table>
+					</div>					
+				</div>
+
+				<div class="row" style="border-bottom:1px solid black; line-height:25px">
+					<div class="col-6" align="center">
+						<strong>DEVENGOS</strong>
+					</div>
+
+					<div class="col-6" align="center">
+						<strong>DIAS A LIQUIDAR</strong>
+					</div>
+				</div>				
+
+				<div class="row" style="border-bottom:1px solid black;margin-top:5px;margin-bottom:5px">
+					<span t-set="detail" t-value="o.get_payslip_data_3()" />
+					<span t-set="total_line_data" t-value="o.get_payslip_data_3(flag=1)" />
+					<div class="col-6" >
+						<table class="table table-sm table-borderless">
+							<body>
+								<tr t-foreach="detail" t-as="each">
+									<td>
+										<span t-esc="each['income3'].name" />
+									</td>
+									<td class="text-right">
+										<span t-if="each['income3']" t-esc="each['income3'].total" t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}"/>
+									</td>						
+								</tr>
+								<tr style="border-top:2px solid black">
+									<th class="text-left">
+										TOTAL DEVENGADO:
+									</th>
+									<th class="text-right">
+										<span t-esc="total_line_data['income3_total']" t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}"/>
+									</th>
+								</tr>
+							</body>
+						</table>
+					</div>
+
+					<div class="col-6" >
+						<table class="table table-sm table-borderless">
+							<body>
+								<tr>
+									<td>
+										<span>Prima: </span>
+									</td>
+									<td class="text-left">
+										<t t-esc="o.no_prima_liq"/><span> dias</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span>Cesantias: </span>
+									</td>
+									<td class="text-left">
+										<t t-esc="o.no_cesan_liq"/> <span> dias</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span>Vacaciones: </span>
+									</td>
+									<td class="text-left">
+										<t t-esc="o.no_vacac_liq"/><span> dias</span>
+									</td>
+								</tr>
+							</body>
+							
+							<!--body>
+								<tr t-foreach="detail" t-as="each">
+									<td>
+									<span t-esc="each['expense'].name" />
+								</td>
+								<td class="text-right">
+									<span t-if="each['expense']" t-esc="each['expense'].total" t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}"/>
+								</td>
+
+								</tr>
+							<tr>
+								<th class="text-left">
+									TOTAL DEDUCCIONES:
+								</th>
+								<th class="text-right">
+									<span t-esc="total_line_data['expense_total']" t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}"/>
+								</th>
+							</tr>
+
+							</body-->
+						</table>
+					</div>
+				</div>
+
+				<div class="row" style="border-bottom:1px solid black;line-height:25px">
+					<div class="col-6">
+						<span>SON: </span>
+					</div>
+
+					<div class="col-6" style="font-size:18px">
+						<strong>NETO A PAGAR:</strong>
+				        <span t-set="detail" t-value="o.get_payslip_data_3()" />
+						<span t-set="total_line_data" t-value="o.get_payslip_data_3(flag=1)" />
+					    <th class="text-right">
+						    <span t-esc="total_line_data['net_total3']" t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}"/>
+					    </th>
+					</div>
+				</div>
+
+				<div class="row" style="border-bottom:1px solid black">
+					<div class="col-12" style="font-size:12px">
+						<span>
+							ARTICULO 128 Ley 50/90 "no constituyen salario las sumas ocasionales y por mera liberalidad que recibe el trabajador del empleador como primas, bonificaciones o gratificaciones ocasionales, participación de utilidades,excedentes de las empresas de economía solidaria y de loque recibe no para su beneficio, ni para enriquecer su patrimonio, sino para desempeñar a cabalidad con sus funciones como gastos  de representación, medios de transporte, elementos de trabajo y otros semejantes".<br/>
+							CONSTANCIA<br/>
+							1.  Que el patrono ha incorporado en la liquidación anterior, en lo pertinente, la totalidad de los valores correspondientes a salarios, descansosremunerados, cesantias, vacaciones, primas y en general  todo concepto relacionado con salarios, prestaciones o indemnizaciones.<br/>
+							2. Que no obstante lo anterior, se hará constatar por las partes que con el pago de la suma  de dineros a que hace referencia la presenteliquidacion, queda transada cualquier diferencia relativa al contrato de trabajo que ha quedado terminado, pues ha sido su comun mininotransar definitivamente, como en efecto transa, todo reclamo pasado, presente o futuro que tenga por causa el mencionado contrato.Por consiguiente, esta transacción tiene como efecto la extinción de las obligaciones provenientes de la relación laboral que existe entre elpatrono y el trabajador quienes reciprocamente  se declaran a paz y salvo por los conceptos expresados.
+						</span>  
+					</div>
+					
+				</div>
+
+				<div class="row" style="margin-top:25px">
+					<div class="col-4" align="center">
+						<span>_____________________</span><br/>
+						<span>REVISÓ: </span>  
+						
+					</div>
+					<div class="col-4"  align="center">
+						<span>_____________________</span>  <br/>
+						<span>APROBÓ: </span>  
+					</div>
+					<div class="col-4"  align="center">
+						<span>_____________________</span>   <br/>
+						<span>TRABAJADOR: </span>  
+					</div>
+					
+				</div>
+				<div style="margin-top:10px;margin-bottom:10px">
+					<span>FECHA DE IMPRESION:</span>
+				</div>
+
+			</div>
+
+        	</div>
+
+			</t>
+		</template>
+
+		<template id="report_custom_liquidacion_temp">
+		<t t-foreach="docs" t-as="o">
+			<t t-call="web.html_container">
+				<t t-call="eq_payslip_custom_pdf_report.liquidacion_report_co_document" />
+			</t>
+		</t>
+	</template>
+</data>
+</odoo>

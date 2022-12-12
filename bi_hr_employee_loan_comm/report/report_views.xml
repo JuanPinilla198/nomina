@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report 
+            id="report_employee_loan_print"
+            string="Print Loan"
+            model="loan.request" 
+            report_type="qweb-pdf"
+            file="bi_hr_employee_loan_comm.report_loan" 
+            name="bi_hr_employee_loan_comm.report_loan" 
+            attachment="(object.name + '_Loan.pdf')"
+        />
+        
+         
+    </data>
+</odoo>

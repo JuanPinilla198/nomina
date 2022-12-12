@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="iuv_inherit_view_company_form" model="ir.ui.view">
+        <field name="name">iuv_inherit_view_company_form</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="//sheet/notebook/page" position="after">
+                <page string="Informacion Nomina">
+                    <group>
+                        <group>
+                            <field name="salario_minimo"/>
+                            <field name="salario_uvt"/>
+                            <field name="aux_transporte"/>
+                            <field name="cantidad_salarios_maximo"/>
+                            <field name="max_salary_integral"/>                          
+                        </group>
+                        <group>
+                            <field name="rule_id"/>
+                            <field name="is_test" widget="radio"/>
+                            <field name="software_identification_code_payroll"/>
+                            <field name="identificador_set_pruebas_payroll"/>
+                            <field name="software_pin_payroll"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="iuv_inherit_view_country_state_form" model="ir.ui.view">
+        <field name="name">iuv_inherit_view_country_state_form</field>
+        <field name="model">res.country.state</field>
+        <field name="inherit_id" ref="base.view_country_state_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="l10n_co_edi_code"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

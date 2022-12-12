@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="inherit_view_hr_payslip_form" model="ir.ui.view">
+        <field name="name">inherit_view_hr_payslip_form</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="bi_hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//button[@name='action_payslip_cancel']" position="after">
+                <button string="Validar DIAN" class="btn btn-warning" name="send_2_validate" type="object" states="done" />                       
+            </xpath>
+            <xpath expr="//button[@name='refund_sheet']" position="replace">
+                <button string="Nota de Ajuste" name="refund_sheet" states="confirm,done" type='object' attrs="{'invisible': ['|',('adj_method', '=', 'adjustment'),'|',('adj_method', '=', 'elimination')]}"/>
+            </xpath>
+          <xpath expr="//field[@name='name']" position="after">
+                <field name="note_type" attrs="{'required': [('credit_note', '=', True)]}" invisible="1"/>
+                <field name="document_source" readonly="1" invisible="1"/>
+                <field name="adj_method" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='credit_note']" position="after">
+                <field name="payment_method" />
+                <!--field name="pagar_FSP"/-->
+                <field name="refund_reason" attrs="{'invisible': [('adj_method', '=', False)]}"/>
+                <field name="refund_date" attrs="{'invisible': [('adj_method', '=', False)]}" invisible="1"/>
+            </xpath>            
+            
+            <xpath expr="//field[@name='number']" position="attributes">
+                <attribute name="attrs">{'readonly': True}</attribute>
+            </xpath>
+            
+            <xpath expr="//form/sheet/notebook" position="inside">
+                <page string="DIAN" name="dian">
+                    <group>
+                        <field name="l10n_co_dian_status" />
+                        <label for="trackid"/>        
+                        <div class="o_row">
+                            <field name="trackid"/>
+                            <button name="l10n_co_check_trackid_status" string="Consultar en DIAN" class="oe_link" type="object" attrs="{'invisible': [('trackid', '=', False)]}"/>
+                        </div>
+                        <field name="cune"/>
+                        <field name="date_send_dian"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="payslip_tree_extended_co" model="ir.ui.view">
+        <field name="name">Vista Tree NE</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="bi_hr_payroll.view_hr_payslip_tree"></field>
+        <field name="arch" type="xml">
+            <field name="payslip_run_id" position="after">
+                <field name="l10n_co_dian_status" string="Estado DIAN" widget="badge" decoration-danger="l10n_co_dian_status == 'not_found'" decoration-success="l10n_co_dian_status == 'valid'" decoration-warning="l10n_co_dian_status == 'undefined' or l10n_co_dian_status == 'none'"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="inherit_view_hr_payslip_form_add_chatter" model="ir.ui.view">
+        <field name="name">inherit_view_hr_payslip_form_add_chatter</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="bi_hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="after">
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_hr_payslip_tree_INHH" model="ir.ui.view">
+        <field name="name">view_hr_payslip_tree.inh</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="bi_hr_payroll.view_hr_payslip_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name='document_source' optional='show' string='Source' />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="bi_hr_payroll.action_view_hr_payslip_form" model="ir.actions.act_window">
+        <field name="name">Payslips</field>
+        <field name="res_model">hr.payslip</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name='domain'>[('adj_method', '=', False)]</field>
+        <field name="search_view_id" ref="bi_hr_payroll.view_hr_payslip_filter"/>
+    </record>
+
+    <record id="action_view_hr_payslip_form_adjustment_note" model="ir.actions.act_window">
+        <field name="name">Adjustment Note</field>
+        <field name="res_model">hr.payslip</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name='domain'>[('adj_method', '=', 'adjustment')]</field>
+        <field name="search_view_id" ref="bi_hr_payroll.view_hr_payslip_filter"/>
+    </record>
+
+    <record id="action_view_hr_payslip_form_elimination_note" model="ir.actions.act_window">
+        <field name="name">Employee Payslips</field>
+        <field name="res_model">hr.payslip</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name='domain'>[('adj_method', '=', 'elimination')]</field>
+        <field name="search_view_id" ref="bi_hr_payroll.view_hr_payslip_filter"/>
+    </record>
+
+    <menuitem
+        id="menu_employee_payslips"
+        name="Employee Payslips"
+        parent="bi_hr_payroll.menu_hr_payroll_root"
+        groups="bi_hr_payroll.group_hr_payroll_user"
+        sequence='9'
+    />
+
+    <menuitem
+        id="bi_hr_payroll.menu_department_tree"
+        action="bi_hr_payroll.action_view_hr_payslip_form"
+        parent="menu_employee_payslips"
+        name="Payslips"
+        groups="bi_hr_payroll.group_hr_payroll_user"
+    />
+
+    <menuitem
+        id="menu_payslips_adjustment_note"
+        action="action_view_hr_payslip_form_adjustment_note"
+        parent="menu_employee_payslips"
+        name="Adjustment Note"
+        groups="bi_hr_payroll.group_hr_payroll_user"
+    />
+
+    <menuitem
+        id="menu_payslips_elimination_note"
+        action="action_view_hr_payslip_form_elimination_note"
+        parent="menu_employee_payslips"
+        name="Elimination Note"
+        groups="bi_hr_payroll.group_hr_payroll_user"
+    />
+</odoo>

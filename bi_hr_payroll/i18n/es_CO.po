@@ -1,0 +1,1477 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bi_hr_payroll
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0-20220225\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-10 22:47+0000\n"
+"PO-Revision-Date: 2022-03-10 18:02-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.report,print_report_name:bi_hr_payroll.action_report_payslip
+msgid "'Payslip - %s' % (object.employee_id.name)"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.actions.report,print_report_name:bi_hr_payroll.payslip_details_report
+msgid "'Payslip Details - %s' % (object.employee_id.name)"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip__state
+msgid ""
+"* When the payslip is created the status is 'Draft'\n"
+"                \n"
+"* If the payslip is under verification, the status is 'Waiting'.\n"
+"                \n"
+"* If the payslip is confirmed then status is set to 'Done'.\n"
+"                \n"
+"* When user cancel payslip the status is 'Rejected'."
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Payroll Rules</span>"
+msgstr "<span class=\"o_form_label\">Reglas de nómina</span>"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_by_employees
+msgid ""
+"<span colspan=\"4\" nolabel=\"1\">This wizard will generate payslips for "
+"all selected employee(s) based on the dates and credit note specified on "
+"Payslips Run.</span>"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "<strong>Address</strong>"
+msgstr "<strong>Contacto Relacionado</strong>"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "<strong>Authorized signature</strong>"
+msgstr "<strong>Firma autorizada</strong>"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "<strong>Bank Account</strong>"
+msgstr "<strong>Cuenta bancaria</strong>"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_contributionregister
+msgid "<strong>Date From:</strong>"
+msgstr "<strong>Fecha desde:</strong>"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "<strong>Date From</strong>"
+msgstr "<strong>Fecha desde</strong>"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_contributionregister
+msgid "<strong>Date To:</strong>"
+msgstr "<strong>Fecha hasta:</strong>"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "<strong>Date To</strong>"
+msgstr "<strong>Fecha hasta</strong>"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "<strong>Designation</strong>"
+msgstr "<strong>Designacion</strong>"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "<strong>Email</strong>"
+msgstr "<strong>Correo</strong>"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "<strong>Identification No</strong>"
+msgstr "<strong>Numero De Identificación</strong>"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "<strong>Name</strong>"
+msgstr "<strong>Nombre</strong>"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "<strong>Reference</strong>"
+msgstr "<strong>Referencia</strong>"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_contributionregister
+msgid "<strong>Register Name:</strong>"
+msgstr "<strong>Nombre De Registro</strong>"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_contributionregister
+msgid "<strong>Total</strong>"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model_terms:ir.actions.act_window,help:bi_hr_payroll.action_contribution_register_form
+msgid ""
+"A contribution register is a third party involved in the salary\n"
+"            payment of the employees. It can be the social security, the\n"
+"            state or anyone that collect or inject money on payslips."
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_res_config_settings__module_account_accountant
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Accounting"
+msgstr "Contabilidad"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Accounting Information"
+msgstr "Información Contable"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__active
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.actions.act_window,help:bi_hr_payroll.action_contribution_register_form
+msgid "Add a new contribution register"
+msgstr "Agregar un nuevo registro de contribución"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Add an internal note..."
+msgstr "Agregar una nota interna"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_contract_advantage_template_view_form
+msgid "Advantage Name"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.actions.act_window,name:bi_hr_payroll.act_children_salary_rules
+msgid "All Children Rules"
+msgstr "Todas las Reglas Hijas"
+
+#. module: bi_hr_payroll
+#: model:hr.salary.rule.category,name:bi_hr_payroll.ALW
+msgid "Allowance"
+msgstr "Prestación"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_payslip_line__condition_select__none
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_salary_rule__condition_select__none
+msgid "Always True"
+msgstr "Siempre Verdadero"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_input__amount
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__amount
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_contributionregister
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "Amount"
+msgstr "Monto"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__amount_select
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__amount_select
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_line_filter
+msgid "Amount Type"
+msgstr "Tipo de cantidad"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_contract__schedule_pay__annually
+msgid "Annually"
+msgstr "Anualmente"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__appears_on_payslip
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__appears_on_payslip
+msgid "Appears on Payslip"
+msgstr "Aparece en el recibo de pago"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_line__condition_python
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_salary_rule__condition_python
+msgid ""
+"Applied this rule for calculation if condition is true. You can specify "
+"condition like basic > 1000."
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:hr.salary.rule.category,name:bi_hr_payroll.BASIC
+msgid "Basic"
+msgstr "Básico"
+
+#. module: bi_hr_payroll
+#: model:hr.salary.rule,name:bi_hr_payroll.hr_rule_basic
+msgid "Basic Salary"
+msgstr "Salario base"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_res_config_settings__module_l10n_be_hr_payroll
+msgid "Belgium Payroll"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_contract__schedule_pay__bi-monthly
+msgid "Bi-monthly"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_contract__schedule_pay__bi-weekly
+msgid "Bi-weekly"
+msgstr "Quincenal"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_line_form
+msgid "Calculations"
+msgstr "Cálculos"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_payslip_lines_contribution_register
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Cancel Payslip"
+msgstr "Cancelar recibo de pago"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__category_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__category_id
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_rule_filter
+msgid "Category"
+msgstr "Categoría"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_form
+msgid "Child Rules"
+msgstr "Reglas Hijas"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__child_ids
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__child_ids
+msgid "Child Salary Rule"
+msgstr "Reglas Hijas del Salario"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payroll_structure__children_ids
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule_category__children_ids
+msgid "Children"
+msgstr "Hijos"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_form
+msgid "Children Definition"
+msgstr "Definición de Hijos"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.res_config_settings_view_form
+msgid "Choose a Payroll Localization"
+msgstr "Elija una localización de nómina"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_payslip_run__state__close
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payslip_run_form
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract_advantage_template__code
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_input__code
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__code
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_worked_days__code
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_rule_input__code
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__code
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule_category__code
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_contributionregister
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "Code"
+msgstr "Código"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payroll_structure_view_kanban
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_view_kanban
+msgid "Code:"
+msgstr "Código:"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_filter
+msgid "Companies"
+msgstr "Compañias"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contribution_register__company_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payroll_structure__company_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__company
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__company_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__company_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__company_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule_category__company_id
+msgid "Company"
+msgstr "Empresa"
+
+#. module: bi_hr_payroll
+#: model:hr.salary.rule.category,name:bi_hr_payroll.COMP
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_form
+msgid "Company Contribution"
+msgstr "Contribución de la empresa"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_form
+msgid "Computation"
+msgstr "Cálculo"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Compute Sheet"
+msgstr "Hoja de cálculo"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__condition_select
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__condition_select
+msgid "Condition Based on"
+msgstr "Condición basada en"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_form
+msgid "Conditions"
+msgstr "Condiciones"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de configuración"
+
+#. module: bi_hr_payroll
+#: model:ir.ui.menu,name:bi_hr_payroll.menu_hr_payroll_configuration
+msgid "Configuration"
+msgstr "Configuración"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__contract_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_input__contract_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__contract_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_worked_days__contract_id
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.act_window,name:bi_hr_payroll.hr_contract_advantage_template_action
+#: model:ir.ui.menu,name:bi_hr_payroll.hr_contract_advantage_template_menu_action
+msgid "Contract Advantage Templates"
+msgstr "Plantillas de ventajas contractuales"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_contribution_register_form
+msgid "Contribution"
+msgstr "Contribución"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_hr_contribution_register
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__register_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__register_id
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_line_filter
+msgid "Contribution Register"
+msgstr "Registro de contribución"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_payslip_lines_contribution_register
+msgid "Contribution Register's Payslip Lines"
+msgstr "Líneas de nómina del registro de contribuciones"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.act_window,name:bi_hr_payroll.action_contribution_register_form
+#: model:ir.ui.menu,name:bi_hr_payroll.menu_action_hr_contribution_register_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_contribution_register_filter
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_contribution_register_tree
+msgid "Contribution Registers"
+msgstr "Registros de contribución"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract_advantage_template__create_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contribution_register__create_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payroll_structure__create_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__create_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_employees__create_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_input__create_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__create_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_run__create_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_worked_days__create_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_rule_input__create_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__create_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule_category__create_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_payslip_lines_contribution_register__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract_advantage_template__create_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contribution_register__create_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payroll_structure__create_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__create_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_employees__create_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_input__create_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__create_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_run__create_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_worked_days__create_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_rule_input__create_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__create_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule_category__create_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_payslip_lines_contribution_register__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__credit_note
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_run__credit_note
+msgid "Credit Note"
+msgstr "Nota de crédito"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__date_from
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_run__date_start
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_payslip_lines_contribution_register__date_from
+msgid "Date From"
+msgstr "Desde"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__date_to
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_run__date_end
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_payslip_lines_contribution_register__date_to
+msgid "Date To"
+msgstr "Hasta"
+
+#. module: bi_hr_payroll
+#: model:hr.salary.rule.category,name:bi_hr_payroll.DED
+msgid "Deduction"
+msgstr "Deducción"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract_advantage_template__default_value
+msgid "Default value for this advantage"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_contract__schedule_pay
+msgid "Defines the frequency of the wage payment."
+msgstr "Define la frecuencia del pago del salario."
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip__struct_id
+msgid ""
+"Defines the rules that have to be applied to this payslip, accordingly to "
+"the contract chosen. If you let empty the field contract, this field isn't "
+"mandatory anymore and thus the rules applied will be all the rules set on "
+"the structure of all contracts of the employee valid for the chosen period"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contribution_register__note
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payroll_structure__note
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_input__name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__note
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_worked_days__name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_rule_input__name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__note
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule_category__note
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_contribution_register_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_form
+msgid "Description"
+msgstr "Descripción"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Details By Salary Rule Category"
+msgstr "Detalles por categoría de regla salarial"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__details_by_salary_rule_category
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "Details by Salary Rule Category"
+msgstr "Detalles por categoría de regla salarial"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract_advantage_template__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contribution_register__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payroll_structure__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_employees__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_input__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_run__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_worked_days__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_rule_input__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule_category__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_payslip_lines_contribution_register__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_report_hr_payroll_report_contributionregister__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_report_hr_payroll_report_payslipdetails__display_name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Nombre Público"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_payslip__state__done
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payslip_run_filter
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_filter
+msgid "Done"
+msgstr "Confirmado"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payslip_run_filter
+msgid "Done Payslip Batches"
+msgstr "Grupos de Nómina terminados"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_filter
+msgid "Done Slip"
+msgstr "Nómina Confirmada"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_payslip__state__draft
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_payslip_run__state__draft
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payslip_run_filter
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_filter
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payslip_run_filter
+msgid "Draft Payslip Batches"
+msgstr "Borrador de Grupos de Nómina"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_filter
+msgid "Draft Slip"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_hr_employee
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__employee_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__employee_id
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_hr_contract
+msgid "Employee Contract"
+msgstr "Contrato de empleado"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_employee_grade_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payroll_structure_list_view
+msgid "Employee Function"
+msgstr "Función de empleado"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_hr_contract_advantage_template
+msgid "Employee's Advantage on Contract"
+msgstr "Ventaja del empleado en el contrato"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_contract__resource_calendar_id
+msgid "Employee's working schedule."
+msgstr "Horario de trabajo del empleado."
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_employees__employee_ids
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_by_employees
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_filter
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_line_filter
+msgid "Employees"
+msgstr "Empleados"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_line__register_id
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_salary_rule__register_id
+msgid "Eventual third party involved in the salary payment of the employees."
+msgstr "Tercero eventual involucrado en el pago de salario de los empleados."
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__amount_fix
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__amount_fix
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_payslip_line__amount_select__fix
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_salary_rule__amount_select__fix
+msgid "Fixed Amount"
+msgstr "Cantidad fija"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_line__amount_percentage
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_salary_rule__amount_percentage
+msgid "For example, enter 50.0 to apply a percentage of 50%"
+msgstr "Por ejemplo, ingrese 50.0 para aplicar un porcentaje del 50%"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_res_config_settings__module_l10n_fr_hr_payroll
+msgid "French Payroll"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_form
+msgid "General"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_by_employees
+msgid "Generate"
+msgstr "Generar"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.act_window,name:bi_hr_payroll.action_hr_payslip_by_employees
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payslip_run_form
+msgid "Generate Payslips"
+msgstr "Generar nóminas"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_hr_payslip_employees
+msgid "Generate payslips for all selected employees"
+msgstr "Generar nóminas para todos los empleados seleccionados"
+
+#. module: bi_hr_payroll
+#: model:hr.salary.rule,name:bi_hr_payroll.hr_rule_taxable
+#: model:hr.salary.rule.category,name:bi_hr_payroll.GROSS
+msgid "Gross"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_filter
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_line_filter
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_rule_filter
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract_advantage_template__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contribution_register__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_employee__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payroll_structure__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_employees__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_input__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_run__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_worked_days__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_rule_input__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule_category__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_payslip_lines_contribution_register__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_report_hr_payroll_report_contributionregister__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_report_hr_payroll_report_payslipdetails__id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_res_config_settings__id
+msgid "ID"
+msgstr "Identificación "
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_run__credit_note
+msgid ""
+"If its checked, indicates that all payslips generated from here are refund "
+"payslips."
+msgstr ""
+"Si está marcado, indica que todas las nóminas generadas a partir de aquí "
+"son nóminas de reembolso."
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_line__active
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_salary_rule__active
+msgid ""
+"If the active field is set to false, it will allow you to hide the salary "
+"rule without removing it."
+msgstr ""
+"Si el campo activo se establece en falso, le permitirá ocultar la regla de "
+"salario sin eliminarla."
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_res_config_settings__module_l10n_in_hr_payroll
+msgid "Indian Payroll"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip__credit_note
+msgid "Indicates this payslip has a refund of another"
+msgstr "Indica que esta nómina tiene un reembolso de otro"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Input Data"
+msgstr "Los datos de entrada"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__input_ids
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__input_ids
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_form
+msgid "Inputs"
+msgstr "Entradas"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__note
+msgid "Internal Note"
+msgstr "Nota interna"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payslip_run_view_kanban
+msgid "Is a Blocking Reason?"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_salary_rule__quantity
+msgid ""
+"It is used in computation for percentage and fixed amount. For e.g. A rule "
+"for Meal Voucher having fixed amount of 1€ per worked day can have its "
+"quantity defined in expression like worked_days.WORK100.number_of_days."
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_input__amount
+msgid ""
+"It is used in computation. For e.g. A rule for sales having 1% commission "
+"of basic salary for per product can defined in expression like result = "
+"inputs.SALEURO.amount * contract.wage*0.01."
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract_advantage_template____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contribution_register____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_employee____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payroll_structure____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_employees____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_input____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_run____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_worked_days____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_rule_input____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule_category____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_payslip_lines_contribution_register____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_report_hr_payroll_report_contributionregister____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_report_hr_payroll_report_payslipdetails____last_update
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_res_config_settings____last_update
+msgid "Last Modified on"
+msgstr "Última Modificación el"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract_advantage_template__write_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contribution_register__write_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payroll_structure__write_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__write_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_employees__write_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_input__write_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__write_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_run__write_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_worked_days__write_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_rule_input__write_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__write_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule_category__write_uid
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_payslip_lines_contribution_register__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract_advantage_template__write_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contribution_register__write_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payroll_structure__write_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__write_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_employees__write_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_input__write_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__write_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_run__write_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_worked_days__write_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_rule_input__write_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__write_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule_category__write_date
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_payslip_lines_contribution_register__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_salary_rule_category__parent_id
+msgid ""
+"Linking a salary category to its parent is used only for the reporting "
+"purpose."
+msgstr ""
+"La vinculación de una categoría salarial a su matriz se utiliza solo para "
+"fines de informes."
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract_advantage_template__lower_bound
+msgid "Lower Bound"
+msgstr "Límite inferior"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_contract_advantage_template__lower_bound
+msgid "Lower bound authorized by the employer for this advantage"
+msgstr "Límite inferior autorizado por el empleador para esta ventaja"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__paid
+msgid "Made Payment Order ? "
+msgstr "Realizó la orden de pago"
+
+#. module: bi_hr_payroll
+#: model:res.groups,name:bi_hr_payroll.group_hr_payroll_manager
+msgid "Manager"
+msgstr "Gerente"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__condition_range_max
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__condition_range_max
+msgid "Maximum Range"
+msgstr "Rango maximo"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__condition_range_min
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__condition_range_min
+msgid "Minimum Range"
+msgstr "Alcance mínimo"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Miscellaneous"
+msgstr "Miscelánea"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_contract__schedule_pay__monthly
+msgid "Monthly"
+msgstr "Mensual"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract_advantage_template__name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contribution_register__name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payroll_structure__name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_run__name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__name
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule_category__name
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_contributionregister
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "Name"
+msgstr "Nombre"
+
+#. module: bi_hr_payroll
+#: model:hr.salary.rule.category,name:bi_hr_payroll.NET
+msgid "Net"
+msgstr "Neto"
+
+#. module: bi_hr_payroll
+#: model:hr.salary.rule,name:bi_hr_payroll.hr_rule_net
+msgid "Net Salary"
+msgstr "Sueldo neto"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_category_form
+msgid "Notes"
+msgstr "Notas"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_worked_days__number_of_days
+msgid "Number of Days"
+msgstr "Número de días"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_worked_days__number_of_hours
+msgid "Number of Hours"
+msgstr "Número de horas"
+
+#. module: bi_hr_payroll
+#: model:res.groups,name:bi_hr_payroll.group_hr_payroll_user
+msgid "Officer"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Other Inputs"
+msgstr "Otras entradas"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payroll_structure__parent_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule_category__parent_id
+msgid "Parent"
+msgstr "Padre"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__parent_rule_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__parent_rule_id
+msgid "Parent Salary Rule"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contribution_register__partner_id
+msgid "Partner"
+msgstr "Asociado"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_hr_payslip
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_input__payslip_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__slip_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_worked_days__payslip_id
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "Pay Slip"
+msgstr "Nómina"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_filter
+msgid "PaySlip Batch"
+msgstr "Grupo de Nómina"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.report,name:bi_hr_payroll.payslip_details_report
+msgid "PaySlip Details"
+msgstr "Detalles de Nómina"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.act_window,name:bi_hr_payroll.action_payslip_lines_contribution_register
+msgid "PaySlip Lines"
+msgstr "Líneas de pago"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.report,name:bi_hr_payroll.action_contribution_register
+msgid "PaySlip Lines By Conribution Register"
+msgstr "Líneas de pago por registro de contribución"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_contributionregister
+msgid "PaySlip Lines by Contribution Register"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_contributionregister
+msgid "PaySlip Name"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.actions.act_window,name:bi_hr_payroll.open_payroll_modules
+#: model:ir.module.category,name:bi_hr_payroll.module_category_hr_payroll
+#: model:ir.ui.menu,name:bi_hr_payroll.menu_hr_payroll_root
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.res_config_settings_view_form
+msgid "Payroll"
+msgstr "Nómina"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_report_hr_payroll_report_contributionregister
+msgid "Payroll Contribution Register Report"
+msgstr "Informe de registro de contribuciones de nómina"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.res_config_settings_view_form
+msgid "Payroll Entries"
+msgstr "Entradas de nómina"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payroll_structure_filter
+msgid "Payroll Structures"
+msgstr "Estructuras de nómina"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.res_config_settings_view_form
+msgid "Payroll rules that apply to your country"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.actions.report,name:bi_hr_payroll.action_report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Payslip"
+msgstr "Nómina"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_hr_payslip_run
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__payslip_run_id
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payslip_run_filter
+msgid "Payslip Batches"
+msgstr "Grupos de Nómina"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.act_window,name:bi_hr_payroll.act_payslip_lines
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__payslip_count
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Payslip Computation Details"
+msgstr "Detalles del cálculo del nómina"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_employee__payslip_count
+msgid "Payslip Count"
+msgstr "Recuento de recibos de pago"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_report_hr_payroll_report_payslipdetails
+msgid "Payslip Details Report"
+msgstr "Informe de detalles del recibo de pago"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_hr_payslip_input
+msgid "Payslip Input"
+msgstr "Entrada de nómina"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__input_line_ids
+msgid "Payslip Inputs"
+msgstr "Entradas de nómina"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_hr_payslip_line
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_line_form
+msgid "Payslip Line"
+msgstr "Línea de pago"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.act_window,name:bi_hr_payroll.act_contribution_reg_payslip_lines
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__line_ids
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_line_filter
+msgid "Payslip Lines"
+msgstr "Líneas de pago"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "Payslip Lines by Contribution Register"
+msgstr "Líneas de nómina por registro de contribuciones"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_payslip_lines_contribution_register
+msgid "Payslip Lines by Contribution Registers"
+msgstr "Líneas de nómina por registros de contribución"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__name
+msgid "Payslip Name"
+msgstr "Nombre de Nómina"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_hr_payslip_worked_days
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__worked_days_line_ids
+msgid "Payslip Worked Days"
+msgstr "Días laborables del recibo de pago"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.act_window,name:bi_hr_payroll.act_hr_employee_payslip_list
+#: model:ir.actions.act_window,name:bi_hr_payroll.action_view_hr_payslip_form
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_employee__slip_ids
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_run__slip_ids
+#: model:ir.ui.menu,name:bi_hr_payroll.menu_department_tree
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payslip_run_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.payroll_hr_employee_view_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_filter
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_tree
+msgid "Payslips"
+msgstr "Nóminas"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.act_window,name:bi_hr_payroll.action_hr_payslip_run_tree
+#: model:ir.ui.menu,name:bi_hr_payroll.menu_hr_payslip_run
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payslip_run_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payslip_run_tree
+msgid "Payslips Batches"
+msgstr "Grupos de Nóminas"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_by_employees
+msgid "Payslips by Employees"
+msgstr "Recibos de pago por empleados"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__amount_percentage
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__amount_percentage
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_payslip_line__amount_select__percentage
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_salary_rule__amount_select__percentage
+msgid "Percentage (%)"
+msgstr "Porcentaje"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__amount_percentage_base
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__amount_percentage_base
+msgid "Percentage based on"
+msgstr "Porcentaje basado en"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payslip_run_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Period"
+msgstr "Período"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.res_config_settings_view_form
+msgid "Post payroll slips in accounting"
+msgstr "Publicar recibos de nómina en contabilidad"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_payslip_lines_contribution_register
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__amount_python_compute
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__amount_python_compute
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_payslip_line__amount_select__code
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_salary_rule__amount_select__code
+msgid "Python Code"
+msgstr "Código Python"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__condition_python
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__condition_python
+msgid "Python Condition"
+msgstr "Condición Python"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_payslip_line__condition_select__python
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_salary_rule__condition_select__python
+msgid "Python Expression"
+msgstr "Expresión Python"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__quantity
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__quantity
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_contributionregister
+msgid "Quantity/Rate"
+msgstr "Cantidad / Tarifa"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "Quantity/rate"
+msgstr "Cantidad / tarifa"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_contract__schedule_pay__quarterly
+msgid "Quarterly"
+msgstr "Trimestral"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_payslip_line__condition_select__range
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_salary_rule__condition_select__range
+msgid "Range"
+msgstr "Distancia"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__condition_range
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__condition_range
+msgid "Range Based on"
+msgstr "Rango basado en"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__rate
+msgid "Rate (%)"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payroll_structure__code
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__number
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Refund"
+msgstr "Nota de Ajuste"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contribution_register__register_line_ids
+msgid "Register Line"
+msgstr "Línea de registro"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_payslip__state__cancel
+msgid "Rejected"
+msgstr "Rechazado"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__salary_rule_id
+msgid "Rule"
+msgstr "Regla"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_category_form
+msgid "Salary Categories"
+msgstr "Categorías salariales"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Salary Computation"
+msgstr "Cálculo de Nómina"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_hr_salary_rule
+msgid "Salary Rule"
+msgstr "Regla de salario"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.act_window,name:bi_hr_payroll.action_hr_salary_rule_category
+#: model:ir.ui.menu,name:bi_hr_payroll.menu_hr_salary_rule_category
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_category_tree
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_salary_rule_category_filter
+msgid "Salary Rule Categories"
+msgstr "Categorías de reglas salariales"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_hr_salary_rule_category
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_line_filter
+msgid "Salary Rule Category"
+msgstr "Categoría de regla salarial"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_hr_rule_input
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_rule_input__input_id
+msgid "Salary Rule Input"
+msgstr "Entrada de regla de salario"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.act_window,name:bi_hr_payroll.action_salary_rule_form
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payroll_structure__rule_ids
+#: model:ir.ui.menu,name:bi_hr_payroll.menu_action_hr_salary_rule_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_list
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_salary_rule_tree
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_employee_grade_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_rule_filter
+msgid "Salary Rules"
+msgstr "Reglas salariales"
+
+#. module: bi_hr_payroll
+#: model:ir.model,name:bi_hr_payroll.model_hr_payroll_structure
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract__struct_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__struct_id
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__struct_id
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payroll_structure_tree
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_line_tree
+msgid "Salary Structure"
+msgstr "Estructura salarial"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.act_window,name:bi_hr_payroll.action_view_hr_payroll_structure_list_form
+#: model:ir.ui.menu,name:bi_hr_payroll.menu_hr_payroll_structure_view
+msgid "Salary Structures"
+msgstr "Estructuras salariales"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract__schedule_pay
+msgid "Scheduled Pay"
+msgstr "Pago programado"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payslip_run_filter
+msgid "Search Payslip Batches"
+msgstr "Buscar Grupos de Nómina"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_line_filter
+msgid "Search Payslip Lines"
+msgstr "Buscar líneas de nómina"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_filter
+msgid "Search Payslips"
+msgstr "Buscar nóminas"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_rule_filter
+msgid "Search Salary Rule"
+msgstr "Buscar regla de salario"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_contract__schedule_pay__semi-annually
+msgid "Semi-annually"
+msgstr "Anualmente"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_input__sequence
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__sequence
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_worked_days__sequence
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_salary_rule__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.hr_payslip_run_form
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Set to Draft"
+msgstr "Establecer en borrador"
+
+#. module: bi_hr_payroll
+#: model:ir.actions.act_window,name:bi_hr_payroll.action_hr_payroll_configuration
+#: model:ir.ui.menu,name:bi_hr_payroll.menu_hr_payroll_global_settings
+msgid "Settings"
+msgstr "Ajustes"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_filter
+msgid "States"
+msgstr "Estados"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__state
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_run__state
+msgid "Status"
+msgstr "Estado"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip__struct_id
+msgid "Structure"
+msgstr "Estructura"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_line__code
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_salary_rule__code
+msgid ""
+"The code of salary rules can be used as reference in computation of other "
+"rules. In that case, it is case sensitive."
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_input__code
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_worked_days__code
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_rule_input__code
+msgid "The code that can be used in the salary rules"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_line__amount_select
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_salary_rule__amount_select
+msgid "The computation method for the rule amount."
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_input__contract_id
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_worked_days__contract_id
+msgid "The contract for which applied this input"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_line__condition_range_max
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_salary_rule__condition_range_max
+msgid "The maximum amount, applied for this rule."
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_line__condition_range_min
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_salary_rule__condition_range_min
+msgid "The minimum amount, applied for this rule."
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_line__condition_range
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_salary_rule__condition_range
+msgid ""
+"This will be used to compute the % fields values; in general it is on "
+"basic, but you can also use categories code fields in lowercase as a "
+"variable names (hra, ma, lta, etc.) and the variable basic."
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_payslip_line__total
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_contributionregister
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslip
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.report_payslipdetails
+msgid "Total"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Total Working Days"
+msgstr "Días laborables totales"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract_advantage_template__upper_bound
+msgid "Upper Bound"
+msgstr "Límite superior"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_contract_advantage_template__upper_bound
+msgid "Upper bound authorized by the employer for this advantage"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_line__sequence
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_salary_rule__sequence
+msgid "Use to arrange calculation sequence"
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_line__appears_on_payslip
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_salary_rule__appears_on_payslip
+msgid "Used to display the salary rule on payslip."
+msgstr ""
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_payslip__state__verify
+msgid "Waiting"
+msgstr "Esperando"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields.selection,name:bi_hr_payroll.selection__hr_contract__schedule_pay__weekly
+msgid "Weekly"
+msgstr "Semanalmente"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Worked Day"
+msgstr "Día trabajado"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Worked Days"
+msgstr "Días trabajados"
+
+#. module: bi_hr_payroll
+#: model_terms:ir.ui.view,arch_db:bi_hr_payroll.view_hr_payslip_form
+msgid "Worked Days & Inputs"
+msgstr "Días trabajados y Entradas"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,field_description:bi_hr_payroll.field_hr_contract__resource_calendar_id
+msgid "Working Schedule"
+msgstr "Programa de trabajo"
+
+#. module: bi_hr_payroll
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_payslip_line__amount_percentage_base
+#: model:ir.model.fields,help:bi_hr_payroll.field_hr_salary_rule__amount_percentage_base
+msgid "result will be affected to a variable"
+msgstr ""

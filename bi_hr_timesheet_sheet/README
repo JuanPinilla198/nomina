@@ -1,0 +1,8 @@
+=> 14.0.0.0: migrate bi_hr_timesheet_sheet in v14
+date :24/5/2021
+version: 14.0.0.1
+changes:
+    1.From the timesheet -> I submit to manager timesheet->create attendance for another employee->Run the scheduler of Generate Timesheet Based on Attendance and Auto Timesheet Submission->it gives a warning
+    2.User was able to submit a timesheet for any other employee from My timesheet menu
+    3.From my timesheet->select multiple timesheets ->From print menu->print timesheet sheet->but in timesheet report, it was prints information multiple times.
+

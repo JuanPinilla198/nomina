@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<menuitem id="timesheet_card"
+            name="Timesheet Card"
+            sequence="7"
+    		parent="hr_timesheet.timesheet_menu_root"
+            />
+	
+	 <menuitem name="My Timesheet Card"
+	  	id="menu_act_my_timesheet_card" 
+	  	parent="timesheet_card" 
+	  	action="bi_hr_timesheet_sheet.ir_actions_server_timesheet_sheet" 
+	  	sequence="2"/>
+
+  	<menuitem name="All Timecards"
+	  	id="menu_act_all_card" 
+	  	parent="timesheet_card" 
+	  	action="hr_timesheet.timesheet_action_all" 
+	  	sequence="3"/>
+
+  	<menuitem name="My Timecards"
+	  	id="menu_act_my_timecard" 
+	  	parent="timesheet_card" 
+	  	action="hr_timesheet.act_hr_timesheet_line" 
+	  	sequence="4"/>
+	
+	
+	<menuitem id="timesheet_card_approve"
+            name="To Approve Timecard"
+            sequence="8"
+    		parent="hr_timesheet.timesheet_menu_root"
+            />
+            
+    <menuitem 
+    	action="bi_hr_timesheet_sheet.act_hr_timesheet_sheet_form" 
+    	id="menu_act_timecard_to_approve" 
+    	name="Timecards Card- Approve"
+    	parent="timesheet_card_approve"
+     	sequence="11" 
+     	groups="hr_timesheet.group_hr_timesheet_user"/>
+
+</odoo>

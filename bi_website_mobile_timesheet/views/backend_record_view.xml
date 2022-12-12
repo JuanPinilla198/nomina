@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	
+	<record id="timesheet_user_details" model="ir.ui.view">
+	    <field name="name">timesheet.user.form</field>
+	    <field name="model">project.project</field>
+	    <field name="inherit_id" ref="project.edit_project"/>
+	    <field name="arch" type="xml">
+	    	<field name="user_id" position="after">
+	    		<field name="hide_project"/>
+	    	</field>
+	    	<xpath expr='//notebook//page[1]' position='after'>
+                <page name="timesheet_user" string="Timesheet Employee User">
+                    <group>
+                        <field name="timesheet_user" widget="one2many_list" nolabel="1">
+                        	<tree string="Timesheet Details">
+                        		<field name="name"/>
+                        		<field name="login"/>
+                        		<field name="lang"/>
+                        		<field name="last_update"/>
+                        	</tree>
+                        </field>
+                    </group>
+                </page>
+	    	</xpath>
+	    </field>
+	</record>
+
+	<!--Timesheet line Views-->
+    <record id="custom_timesheet_line_tree" model="ir.ui.view">
+        <field name="name">custom.account.analytic.line.tree.timesheet</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+	    	<xpath expr='//field[@name="task_id"]' position='after'>
+	            <field name="work_type"/>
+	            <field name="st_time"/>
+	            <field name="ed_time"/>
+	            <field name="is_billable"/>
+	            <field name="is_paid"/>
+	            <field name="employee"/>
+			</xpath>
+        </field>
+    </record>
+
+	<record id="timesheet_user_details_in_task" model="ir.ui.view">
+	    <field name="name">timesheet.user.form.in.task</field>
+	    <field name="model">project.task</field>
+	    <field name="inherit_id" ref="project.view_task_form2"/>
+	    <field name="arch" type="xml">
+	    	<xpath expr='//notebook//page[last()]' position='after'>
+                <page name="timesheet_user_in_task" string="Timesheet Employee User">
+                    <group>
+                        <field name="timesheet_user" widget="one2many_list" nolabel="1">
+                        	<tree string="Timesheet Details">
+                        		<field name="name"/>
+                        		<field name="login"/>
+                        		<field name="lang"/>
+                        		<field name="last_update"/>
+                        	</tree>
+                        </field>
+                    </group>
+                </page>
+	    	</xpath>
+	    </field>
+	</record>
+
+	<record id="work_type_tree_view" model="ir.ui.view">
+		<field name="name">work.type.tree.view</field>
+	    <field name="model">timesheet.work.type</field>
+	    <field name="arch" type="xml">
+	    	<tree string="Work Types">
+                <field name="work_code" />
+                <field name="work_type" />
+            </tree>
+	    </field>
+	</record>
+
+	<record id="work_type_form_view" model="ir.ui.view">
+		<field name="name">work.type.form.view</field>
+	    <field name="model">timesheet.work.type</field>
+	    <field name="arch" type="xml">
+	    	<form string="Work Types">
+	    		<sheet>
+		    		<group>
+	                	<field name="work_code" />
+	                	<field name="work_type" />
+	                </group>
+	            </sheet>
+            </form>
+	    </field>
+	</record>
+
+    <record id="act__work_types" model="ir.actions.act_window">
+        <field name="name">Work Types</field>
+        <field name="res_model">timesheet.work.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+	<menuitem id="menu_timesheets_config" name="Work Types"
+            parent="hr_timesheet.timesheet_menu_root" sequence="100"/>
+    <menuitem id="action_work_type" parent="menu_timesheets_config" action="act__work_types"/>
+
+</odoo>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="report_payslip_template">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                       <!-- <table class="table">
+                            <tr style="border:1px solid black;">
+                                <th colspan="2">COD. EMPLEADO</th>
+                                <th colspan="2">NOMBRE</th>
+                                <t t-foreach="_get_header" t-as="idx">
+                                    <t t-foreach="idx" t-as="key">
+                                        <th t-att-colspan="len(key_value)" class="text-center"><span t-esc="key.name"/></th>
+                                    </t>
+                                </t>
+                            </tr>
+                        </table> -->
+                        <t t-foreach="grouped_data" t-as="account_id">
+                            <t t-set="account_data" t-value="get_analytic_data(account_id)"/>
+                            <div class="row p-3">
+                                <div class="container">
+                                    <table style="border:1px solid black;">
+                                        <thead>
+                                            <tr>
+                                                <th class="w-25"><span t-esc="account_data.parent_id.code"/></th>
+                                                <th class="w-50"><span t-esc="account_data.parent_id.name"/></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row p-3">
+                                <div class="container">
+                                    <table style="border:1px solid black;">
+                                        <thead>
+                                            <tr>
+                                                <th class="w-25"><span t-esc="account_data.code"/></th>
+                                                <th class="w-50"><span t-esc="account_data.name"/></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            <t t-set="total_rule_sum_dict" t-value="{}"/>
+                            <table border="1" class="table">
+                                <tr style="border:1px solid black;">
+                                    <th colspan="2">COD. EMPLEADO</th>
+                                    <th colspan="2">NOMBRE</th>
+                                    <t t-foreach="_get_header" t-as="idx">
+                                        <t t-foreach="idx" t-as="key">
+                                            <th t-att-colspan="len(key_value)" class="text-center"><span t-esc="key.name"/></th>
+                                        </t>
+                                    </t>
+                                </tr>
+                                <tr t-foreach="grouped_data.get(account_id, [])" t-as="payslip">
+                                    <td colspan="3">
+                                        <span t-esc="payslip.contract_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="payslip.employee_id.name"/>
+                                    </td>
+                                    <t t-foreach="_get_rule_list" t-as="col_rule_id">
+                                        <td class="text-right">
+                                            <t t-set="amount" t-value="payslip.line_ids.filtered(lambda l: l.salary_rule_id.id == col_rule_id.id).total"/>
+                                            <span t-esc="'%.2f'% amount"/>
+                                            <t t-if="col_rule_id not in total_rule_sum_dict">
+                                                <t t-set="total_rule_sum_dict" t-esc="total_rule_sum_dict.update({col_rule_id: []})"/>
+                                            </t>
+                                            <t t-set="total_rule_sum_dict" t-esc="total_rule_sum_dict[col_rule_id].append(amount)"/>
+                                        </td>
+                                    </t>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-center font-weight-bold">Total</td>
+                                    <td t-foreach="_get_rule_list" t-as="col_rule_id" class="text-right font-weight-bold">
+                                        <span t-esc="'%.2f'% sum(total_rule_sum_dict.get(col_rule_id))"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </t>
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

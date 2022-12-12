@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+
+<record id="hr_rule_advance_salary" model="hr.salary.rule">
+            <field name="name">Salario Anticipado</field>
+            <field name="sequence" eval="809"/>
+            <field name="code">1090</field>
+            <field name="account_credit" ref="l10n_co.co_puc_133015"/>
+            <field name="account_debit" ref="l10n_co.co_puc_250505"/>
+            <field name="category_id" ref="bi_hr_payroll.DED"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.get_advancesalary(employee.id,payslip.date_from,payslip.date_to) != 0:
+    result = True</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = employee.get_advancesalary(employee.id,payslip.date_from,payslip.date_to)</field>
+            <!--field name="struct_id" ref="bi_hr_payroll.structure_002"/-->
+        </record>
+
+ </data>
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record  model="ir.ui.view" id="payroll_cancell_wizard_view_form">
+            <field name="name">Payroll Cancel Wizard</field>
+            <field name="model">payroll.cancel.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="payslip_id" invisible='1' force_save='1'/>
+                            <field name="adj_method" required='1' force_save='1'/>
+                        </group>
+                        <group attrs="{'invisible': [('adj_method', '=', False)]}">
+                            <div>
+                                <span attrs="{'invisible': [('adj_method', '!=', 'adjustment')]}">The credit note is created in draft and can be edited before being issued.</span>
+                                <span attrs="{'invisible': [('adj_method', '!=', 'elimination')]}">The credit note is created in draft and can be edited before being issued.</span>
+                            </div>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group>
+                            <field name='reason' force_save='1'/>
+                            <field name='refund_date' required='1' force_save='1'/>
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button name="action_reverse" string="Reverse" type="object" class="oe_highlight"/>
+                        <button string="Close" special="cancel" class="btn-primary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

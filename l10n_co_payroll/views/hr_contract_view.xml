@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="iuv_inherit_hr_contract_view_form" model="ir.ui.view">
+        <field name="name">iuv_inherit_hr_contract_view_form</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="//group/group/field[@name='job_id']" position="after">
+                <field name="contract_type" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_contract_view_form_inherit_add_payroll_period" model="ir.ui.view">
+        <field name="name">hr.contract.view.form.inherit.add.payroll.period</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_end']" position="after">
+                <field name="payroll_period" />
+            </xpath>
+            <xpath expr="//field[@name='contract_type']" position="after">
+                <field name="phase" attrs="{'invisible': [('contract_type', '!=', '4')], 'required': [('contract_type', '==', '4')]}" />
+            </xpath>
+        </field>
+    </record> 
+
+</odoo>

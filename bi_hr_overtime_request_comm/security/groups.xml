@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="hr_manager_overtime_id" model="res.groups">
+		<field name="name">HR(Overtime Salary)</field>
+	</record>
+   
+    <record id="dept_manager_overtime_id" model="res.groups">
+		<field name="name">Department Manager(Overtime Salary)</field>
+	</record>
+
+	<record model="res.groups" id="group_show_req">
+        <field name="name">Show Own Request</field>
+	</record>
+
+	<record id="employee_or_rule" model="ir.rule">
+		<field name="name">Employee</field>
+		<field name="model_id" ref="bi_hr_overtime_request_comm.model_overtime_request"/>
+		<field name="domain_force">['|',('employee_id.user_id','=',user.id),('employee_id.user_id','=',False)]</field>
+		<field name="groups" eval="[(4,ref('bi_hr_overtime_request_comm.group_show_req'))]"/>
+	</record>
+
+	<record id="res_hr_dept_manager_rule" model="ir.rule">
+		<field name="name">HR/Department Manager</field>
+		<field name="model_id" ref="bi_hr_overtime_request_comm.model_overtime_request"/>
+		<field name="global" eval="True"/>
+		<field name="domain_force">[(1,'=',1)]</field>
+		<field name="groups" eval="[(4,ref('bi_hr_overtime_request_comm.hr_manager_overtime_id')),(4, ref('bi_hr_overtime_request_comm.dept_manager_overtime_id'))]"/>
+	</record>
+</odoo>

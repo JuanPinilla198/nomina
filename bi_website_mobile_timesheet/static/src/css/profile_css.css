@@ -1,0 +1,35 @@
+/* ADD NEW TIMESHEET */
+
+#timesheet_body{
+	padding: 10px 0;
+	.breadcrumb{
+		padding:0 30px;
+	}
+  .timesheet_center{
+    float: none !important;
+    margin: 0 auto;
+  }
+}
+.my_timesheet_list form, .add_timesheet_activity{
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+}
+.my_timesheet_list .timesheet_search_div{
+    margin-bottom: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+    .my_timesheet_list form, .add_timesheet_activity{
+        width: 100% !important;
+    }
+}
+@media only screen and (max-width: 575px) {
+    .timesheets_view_all {
+        margin: 0;
+    }
+    .timesheet_table{
+        overflow: scroll;
+        display: block;
+    }
+}

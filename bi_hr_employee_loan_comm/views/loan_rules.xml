@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+
+    <record id="hr_loan_installment_rule" model="hr.salary.rule">
+            <field name="name">Préstamo</field>
+            <field name="sequence" eval="835"/>
+            <field name="code">1013</field>
+            <field name="category_id" ref="bi_hr_payroll.DED"/>
+            <field name="account_credit" ref="l10n_co.co_puc_136525"/>
+            <field name="account_debit" ref="l10n_co.co_puc_250505"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.get_installment_loan(employee.id,payslip.date_from,payslip.date_to) == 0:
+    result = False
+elif employee.get_installment_loan(employee.id,payslip.date_from,payslip.date_to) != 0:
+    result = True
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = round(employee.get_installment_loan(employee.id,payslip.date_from,payslip.date_to))</field>
+        </record>
+
+        <record id="hr_loan_disburse_rule" model="hr.salary.rule">
+            <field name="name">Desembolso Préstamo</field>
+            <field name="sequence" eval="711"/>
+            <field name="code">1014</field>
+            <field name="category_id" ref="bi_hr_payroll.ALW"/>
+            <!--field name="account_credit" ref="l10n_co.co_puc_136525"/>
+            <field name="account_debit" ref="l10n_co.co_puc_250505"/-->
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.get_principal_amount(payslip.date_from) == 0:
+    result = False
+elif employee.get_principal_amount(payslip.date_from) != 0:
+    result = True
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = employee.get_principal_amount(payslip.date_from)</field>
+        </record>
+
+
+
+    <record id="hr_loan_interest_rule" model="hr.salary.rule">
+            <field name="name">Intereses de Préstamo</field>
+            <field name="sequence" eval="400"/>
+            <field name="code">1013-1</field>
+            <field name="category_id" ref="bi_hr_payroll.DED"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">if employee.get_interest_loan(employee.id,payslip.date_from,payslip.date_to) == 0:
+    result = False
+elif employee.get_interest_loan(employee.id,payslip.date_from,payslip.date_to) != 0:
+    result = True
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = employee.get_interest_loan(employee.id,payslip.date_from,payslip.date_to)</field>
+        </record>
+
+
+        <record id="email_template_apply_loan_request" model="mail.template">
+            <field name="name">Employee Applied Loan Request</field>
+            <field name="subject">${object.name} </field>
+            <field name="email_to">${object.email|safe}</field>
+            <field name="model_id" ref="bi_hr_employee_loan_comm.model_loan_request" />
+            <field name="auto_delete" eval="True" />
+            <field name="body_html"><![CDATA[
+                    <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        <p>Respected Sir/Madam,</p>
+                        <p>${object.employee_id.name} Employee Applied for Loan.</p>
+                        <p> Loan Number : ${object.name} </p>
+                        <p> Principal amount : ${object.principal_amount} </p>
+                        <p> Thank You</p>
+                    </div>
+                        ]]>
+            </field>
+        </record>
+
+
+
+
+
+        <record id="email_template_dept_approved_loan_request" model="mail.template">
+            <field name="name">Department Approved Loan Request</field>
+            <field name="subject">${object.name} </field>
+            <field name="email_to">${object.email|safe}</field>
+            <field name="model_id" ref="bi_hr_employee_loan_comm.model_loan_request" />
+            <field name="auto_delete" eval="True" />
+            <field name="body_html"><![CDATA[
+                    <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        <p>Respected Sir/Madam,</p>
+                        <p>${object.employee_id.name} Employee approval for Loan.</p>
+                        <p>Department Head ${object.department_employee_id.name} approved this loan.
+                        <p> Loan Number : ${object.name} </p>
+                        <p> Principal amount : ${object.principal_amount} </p>
+                        <p> Thank You</p>
+                    </div>
+                        ]]>
+            </field>
+        </record>   
+
+
+        <record id="email_template_hr_approved_loan_request" model="mail.template">
+            <field name="name">HR Approved Loan Request</field>
+            <field name="subject">${object.name} </field>
+            <field name="email_to">${object.email|safe}</field>
+            <field name="model_id" ref="bi_hr_employee_loan_comm.model_loan_request" />
+            <field name="auto_delete" eval="True" />
+            <field name="body_html"><![CDATA[
+                    <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        <p>Respected Sir/Madam,</p>
+                        <p>${object.employee_id.name} Employee approval for Loan.</p>
+                        <p>HR Head ${object.department_employee_id.name} approved this loan.
+                        <p> Loan Number : ${object.name} </p>
+                        <p> Principal amount : ${object.principal_amount} </p>
+                        <p> Thank You</p>
+                    </div>
+                        ]]>
+            </field>
+        </record>   
+
+        <record id="email_template_accountant_approved_loan_request" model="mail.template">
+            <field name="name">accountant Approved Loan Request</field>
+            <field name="subject">${object.name} </field>
+            <field name="email_to">${object.email|safe}</field>
+            <field name="model_id" ref="bi_hr_employee_loan_comm.model_loan_request" />
+            <field name="auto_delete" eval="True" />
+            <field name="body_html"><![CDATA[
+                    <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        <p>Hello ,</p>
+                        <p>${object.employee_id.name} Employee approval for Loan.</p>
+                        <p>Accountant Head ${object.department_employee_id.name} approved this loan.
+                        <p> Loan Number : ${object.name} </p>
+                        <p> Principal amount : ${object.principal_amount} </p>
+                        <p> Thank You</p>
+                    </div>
+                        ]]>
+            </field>
+        </record>      
+
+
+        <record id="email_template_cancel_loan_request" model="mail.template">
+            <field name="name">Cancel Loan Request</field>
+            <field name="subject">${object.name} </field>
+            <field name="email_to">${object.email|safe}</field>
+            <field name="model_id" ref="bi_hr_employee_loan_comm.model_loan_request" />
+            <field name="auto_delete" eval="True" />
+            <field name="body_html"><![CDATA[
+                    <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        <p>Hello ,</p>
+                        <p>${object.employee_id.name} Employee approval for Loan.</p>
+                        <p>${object.department_employee_id.name} Cancelled this loan.
+                        <p> Loan Number : ${object.name} </p>
+                        <p> Principal amount : ${object.principal_amount} </p>
+                        <p> Thank You</p>
+                    </div>
+                        ]]>
+            </field>
+        </record>     
+
+        <record id="email_template_disburse" model="mail.template">
+            <field name="name">Loan Disburse Notification</field>
+            <field name="subject">${object.name} </field>
+            <field name="email_to">${object.email|safe}</field>
+            <field name="model_id" ref="bi_hr_employee_loan_comm.model_loan_request" />
+            <field name="auto_delete" eval="True" />
+            <field name="body_html"><![CDATA[
+                    <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        <p>Hello ,</p>
+                        <p>${object.employee_id.name} Employee your Loan is successfully paid.</p>
+                        <p> Loan Number : ${object.name} </p>
+                        <p> Principal amount : ${object.principal_amount} </p>
+                        <p> Thank You</p>
+                    </div>
+                        ]]>
+            </field>
+        </record>
+    </data>
+</odoo>

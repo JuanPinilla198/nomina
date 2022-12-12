@@ -1,0 +1,161 @@
+<odoo>
+    <data>
+
+        <record id="payroll_window_form" model="ir.ui.view">
+            <field name="name">Emisón nomina</field>
+            <field name="model">payroll.payroll.window</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="%(l10n_co_payroll.adjust_method_wizard)d" type="action" string="Nota de ajuste o eliminación" context="{'dian_doc_id':id}"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="employee"/>
+                                <field name="estado"/>
+                                <field name="tipo_doc" string="Tipo de documento"/>
+                                <field name="fecha_doc" string="Fecha generacion"/>
+                                <field name="cliente_email" invisible="1"/>
+                                <field name="fecha_env" invisible="1"/>
+                                <field name="file_xml" string="Descargar zip" filename="edi_filename"/>
+                            </group>
+                            <group>
+                                <field name="nom_arc_xml" invisible="1"/>
+                                <field name="fecha_env_xml" invisible="1"/>
+                                <field name="respuesta_env" invisible="1"/>
+                                <field name="fecha_con_dian" invisible="1"/>
+                                <field name="respuesta_con" invisible="1"/>
+                                <field name="nombre_zip"/>
+                                <field name="cune" string="CUNE"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="respuesta_dian"/>
+                            <field name="consolidados_table1_ids">
+                                <tree>
+                                    <field name="employee" />
+                                    <field name="payroll_number" />
+                                    <field name="total_accruals" />
+                                    <field name="total_deductions" />
+                                    <field name="total_wage" />
+                                </tree>
+                            </field>
+                            <field name="contenido_env" invisible="1"/>
+                            <field name="contenido_con" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="table_ids" string="Documentos Relacionados"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="payroll_window_tree" model="ir.ui.view">
+            <field name="name">payroll.window.tree</field>
+            <field name="model">payroll.payroll.window</field>
+            <field name="arch" type="xml">
+                <tree  import="false" string="Emitir">
+                    <field name="name" string="Número de nomina"/>
+                    <field name="employee" string="Nombre empleado"/>
+                    <field name="date_from" string="Fecha inicio"/>
+                    <field name="date_to" string="Fecha final"/>
+                    <field name="estado" string="Estado"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="payroll_wizard_window_form" model="ir.ui.view">
+            <field name="name">Lote de emisión</field>
+            <field name="model">payroll.wizard.window</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="date_from"/>
+                            </group>
+                            <group>
+                                <field name="date_to"/>
+                            </group>
+                            <group>
+                                <field name="campo" invisible="1"/>
+                                <button name="cargar" string="Cargar datos" class="oe_rigth oe_highlight" type="object" attrs="{'invisible': [('campo', '==', False)]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Documentos relacionados">
+                                <group>
+                                    <field name="table_ids" nolabel="1" readonly="1"/>
+                                </group>
+                            </page>
+                            <page string="Documentos consolidados">
+                                <group>
+                                    <field name="consolidados_table_ids" nolabel="1" readonly="1">
+                                        <tree>
+                                            <field name="employee" />
+                                            <field name="payroll_number" />
+                                            <field name="total_accruals" />
+                                            <field name="total_deductions" />
+                                            <field name="total_wage" />
+                                            <field name="consolidate_id" invisible="1" />
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Consolidados">
+                                <group>
+                                    <field name="emision_nominas" nolabel="1" readonly="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                        <footer>
+                            <button name="PayslipObject" string="Generar" class="oe_rigth oe_highlight" type="object"/>
+                            <button special="cancel" string="Cancelar" class="oe_rigth"/> 
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="payroll_wizard_window_tree" model="ir.ui.view">
+            <field name="name">payroll.wizard.window.tree</field>
+            <field name="model">payroll.wizard.window</field>
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="date_from" string="Fecha inicio"/>
+                    <field name="date_to" string="Fecha final"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="payroll_window_view" model="ir.actions.act_window">
+            <field name="name">Documentos Dian</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">payroll.payroll.window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Documentos DIAN
+                </p>
+            </field>
+        </record>
+
+        <record id="payroll_wizard_window_view" model="ir.actions.act_window">
+            <field name="name">Lotes de emisión</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">payroll.wizard.window</field>
+            <field name="view_id" ref="payroll_wizard_window_tree"/>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+
+        <menuitem id="payroll_wizard_window_menu" name="Lotes de emisión" parent="l10n_co_payroll.menu_employee_payslips" sequence="90"
+                  action="payroll_wizard_window_view"/>
+
+        <menuitem id="payroll_window_menu" name="Documentos DIAN" parent="l10n_co_payroll.menu_employee_payslips" sequence="100"
+                  action="payroll_window_view"/>
+
+    </data>
+</odoo>

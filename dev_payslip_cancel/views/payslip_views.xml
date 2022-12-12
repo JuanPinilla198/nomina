@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle 
+ -->
+<odoo>
+    <record id="view_dev_payslip_cancel_form" model="ir.ui.view">
+        <field name="name">view.dev.payslip.cancle.form</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="bi_hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_payslip_cancel']" position="attributes">
+                <attribute name="groups">dev_payslip_cancel.payslip_cancel_button</attribute>
+                <attribute name="states">draft,hr_check,confirm,verify,done</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

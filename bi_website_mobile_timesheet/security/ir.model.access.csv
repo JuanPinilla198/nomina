@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_website_timesheet_work_type_group_user,access_website_timesheet_work_type_group_user,bi_website_mobile_timesheet.model_timesheet_work_type,,1,1,1,1
+access_timesheet_user_details_group_user,access_timesheet_user_details_group_user,bi_website_mobile_timesheet.model_timesheet_user_details,,1,1,1,1
+
