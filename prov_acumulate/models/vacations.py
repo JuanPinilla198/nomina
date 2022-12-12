@@ -290,7 +290,6 @@ class HrPayslip(models.Model):
                     holidays_co = self._get_public_holidays_colombia(
                         year, datefrom, dateto)
                     sundays = self._get_sundays(datefrom, dateto)
-                        
                 
             # compute worked days
             work_data = contract.employee_id._get_work_days_data_batch(
@@ -384,6 +383,8 @@ class HrPayslip(models.Model):
                     if data.dias_disfrutados < data.dias and data.dias_disfrutados == 0:
                         if days_in_year > data.dias_disfrutados:
                             if days_in_year >= data.dias:
+                                print(data.fecha_desde,
+                                        days_in_year, "es aqui")
                                 days_in_year -= data.dias
                                 data.dias_disfrutados = data.dias
                                 data.fecha_pago = self.date_to
@@ -411,6 +412,8 @@ class HrPayslip(models.Model):
                 if data.dias_disfrutados < data.dias and data.dias_disfrutados == 0:
                     if days_in_year > data.dias_disfrutados:
                         if days_in_year >= data.dias:
+                            print(data.fecha_desde,
+                                    days_in_year, "es aqui")
                             days_in_year -= data.dias
                             data.dias_disfrutados = data.dias
                             data.fecha_pago = self.date_to
@@ -444,6 +447,8 @@ class HrPayslip(models.Model):
                     if data.dias_disfrutados < data.dias and data.dias_disfrutados == 0:
                         if days_in_year > data.dias_disfrutados:
                             if days_in_year >= data.dias:
+                                print(data.fecha_desde,
+                                      days_in_year, "es aqui 1")
                                 days_in_year -= data.dias
                                 data.dias_disfrutados = data.dias
                                 data.fecha_pago = self.date_to
@@ -511,13 +516,14 @@ class HrPayslip(models.Model):
                     pro_vac.pago_realizado = ((pro_vac.dias_disfrutados*pro_vac.pago_parcial)/pro_vac.dias)
                     pro_vac.fecha_pago = ''
             
+
+
 class HolidaysRequest(models.Model):
     _inherit = "hr.leave"
 
     request_date_from = fields.Date('Request Start Date', default=date.today())
     request_date_to = fields.Date('Request End Date', default=date.today())
     field_bol = fields.Boolean(invisible="0", readonly="0" )
-    vacation_bool = fields.Boolean(readonly="1" )
 
     def _include_sunday_by_week(self, employee):
 
@@ -546,21 +552,15 @@ class HolidaysRequest(models.Model):
         employee = self.employee_id
         days = self.number_of_days
         dato = self._include_sunday_by_week(employee)
-        holidays_co = sundays = nb_of_days = 0
-
-        for hide in self:
-            if hide.holiday_status_id.name == "VACACIONES DE DISFRUTE":
-                self.vacation_bool = True
-            else: 
-                self.vacation_bool = False
-        
         for holiday in self:
             if holiday.holiday_status_id.name == "AUSENCIA_NO_REMUNERADO":
                 if dato != []:
                     for i in range(0,len(dato)):
                         exist = dato[i][2]
                         if holiday.employee_id == exist['empleado'] and holiday.request_date_to.isocalendar()[1] == exist['date_to_week']:
+                            print("1")
                             if not exist['include_sunday']:
+                                print("1.1")
                                 number_days = holiday.request_date_to - holiday.request_date_from
                                 try:
                                     number_days = float(str(number_days).replace("0:00:00", "1"))
@@ -577,17 +577,20 @@ class HolidaysRequest(models.Model):
                                 holiday.include_sunday = True
                                 break
                             else:
+                                print("1.2")
                                 if holiday.include_sunday == False:
                                     holiday.number_of_days = days + 1
                                 else:
                                     holiday.number_of_days = days
                         elif holiday.request_date_to.isocalendar()[1] != exist['date_to_week']:
+                            print("2")
                             holiday.field_bol = False
                             if holiday.include_sunday == False:
                                 holiday.number_of_days = days + 1
                             else:
                                 holiday.number_of_days = days - 1
                         else:
+                            print("3")
                             if holiday.include_sunday == False:
                                 holiday.number_of_days = days + 1
                             else:
@@ -597,7 +600,20 @@ class HolidaysRequest(models.Model):
                         holiday.number_of_days = days + 1
                     else:
                         holiday.number_of_days = holiday.number_of_days
-            
+            elif holiday.holiday_status_id.name != "AUSENCIA_NO_REMUNERADO":   
+                if holiday.date_from and holiday.date_to:
+                    holiday.number_of_days = holiday._get_number_of_days(holiday.date_from, holiday.date_to, holiday.employee_id.id)['days']
+                else:
+                    holiday.number_of_days = 0
+        return res
+
+    @api.depends('number_of_days')
+    def _compute_number_of_days_display(self):
+        res = super(HolidaysRequest, self)._compute_number_of_days_display()
+        
+        holidays_co = sundays = nb_of_days = 0
+        for holiday in self:
+
             if holiday.date_to.month == 2:
                 if holiday.date_to.day == 28:
                     nb_of_days = 2
@@ -625,22 +641,7 @@ class HolidaysRequest(models.Model):
                         holidays_co += 1
                 holiday.number_of_days -= sundays
                 holiday.number_of_days -= holidays_co
-
-            elif holiday.holiday_status_id.name != "AUSENCIA_NO_REMUNERADO" or holiday.holiday_status_id.name != "VACACIONES DE DISFRUTE":   
-                if holiday.date_from and holiday.date_to:
-                    holiday.number_of_days = holiday._get_number_of_days(holiday.date_from, holiday.date_to, holiday.employee_id.id)['days']
-                else:
-                    holiday.number_of_days = 0
-        return res
-
-    @api.depends('number_of_days')
-    def _compute_number_of_days_display(self):
-        res = super(HolidaysRequest, self)._compute_number_of_days_display()
-
-        for holiday in self:
             if holiday.holiday_status_id.name == "AUSENCIA_NO_REMUNERADO": 
-                holiday.number_of_days_display = holiday.number_of_days
-            if holiday.holiday_status_id.name == "VACACIONES NO REMUNERADO": 
                 holiday.number_of_days_display = holiday.number_of_days
 
         return res
@@ -678,6 +679,7 @@ class HolidaysRequest(models.Model):
                 contract = self.env['hr.contract'].search(
                     [('employee_id', '=', _holiday.employee_id.id), ('state', '=', "open")])
                 if (_holiday.number_of_days - sundays - holidays_co) > contract.dias_totales:
+                    print(_holiday.number_of_days, contract.dias_totales)
                     raise UserError(
                         'El numero de dias que seleccionaste excede el acumulado, prueba con menos dias, el acumulado actual es de ' + str(int(contract.dias_totales)) + ' dia(s)')
         return True
