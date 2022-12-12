@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_account_extra_account_extra,account_extra.account_extra,model_account_extra_account_extra,,1,0,0,0
