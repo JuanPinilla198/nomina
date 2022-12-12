@@ -153,7 +153,7 @@
     </record>
 
     <record id="hr_payroll_cdc" model="hr.salary.rule.category">
-        <field name="name">Caja de compensanción</field>
+        <field name="name">Aportes Parafiscales</field>
         <field name="code">cdc</field>
     </record>
 
@@ -1827,7 +1827,7 @@ else:
             <field name="name">Aporte Pensión Empleado</field>
             <field name="sequence" eval="806"/>
             <field name="code">1010</field>
-            <field name="rule_type">devengos</field>
+            <field name="rule_type">deducciones</field>
             <field name="account_debit" ref="l10n_co.co_puc_250505"/>
             <field name="account_credit" ref="l10n_co.co_puc_238030"/>
             <field name="category_id" ref="hr_payroll_categories_apen"/>
@@ -2053,12 +2053,14 @@ else:
             <field name="account_credit" ref="l10n_co.co_puc_237010"/>
             <field name="category_id" ref="hr_payroll_cdc"/>
             <field name="condition_select">python</field>
-            <field name="condition_python">if contract.contract_type == "4":
-    result = False
-else:
-    result = True</field>
+            <field name="condition_python">if payslip.date_from.day > 15 or payslip.date_to.day in (28, 29, 30, 31) or payslip.is_liquid == True:
+    if contract.contract_type == "4":
+        result = False
+    else:
+        result = True</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = round(categories.base_p * 0.04)</field>
+            <field name="amount_python_compute">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.04))</field>
         </record>
 
 <record id="hr_rule_total_caja_com_ven" model="hr.salary.rule">
@@ -2070,12 +2072,14 @@ else:
             <field name="account_credit" ref="l10n_co.co_puc_237010"/>
             <field name="category_id" ref="hr_payroll_cdc"/>
             <field name="condition_select">python</field>
-            <field name="condition_python">if contract.contract_type == "4":
-    result = False
-else:
-    result = True</field>
+            <field name="condition_python">if payslip.date_from.day > 15  or payslip.date_to.day in (28, 29, 30, 31) or payslip.is_liquid == True:
+    if contract.contract_type == "4":
+        result = False
+    else:
+        result = True</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = round(categories.base_p * 0.04)</field>
+            <field name="amount_python_compute">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.04))</field>
         </record>
 
         <record id="hr_rule_total_caja_com_ops" model="hr.salary.rule">
@@ -2087,12 +2091,134 @@ else:
             <field name="account_credit" ref="l10n_co.co_puc_237010"/>
             <field name="category_id" ref="hr_payroll_cdc"/>
             <field name="condition_select">python</field>
-            <field name="condition_python">if contract.contract_type == "4":
-    result = False
-else:
-    result = True</field>
+            <field name="condition_python">if payslip.date_from.day > 15  or payslip.date_to.day in (28, 29, 30, 31) or payslip.is_liquid == True:
+    if contract.contract_type == "4":
+        result = False
+    else:
+        result = True</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = round(categories.base_p * 0.04)</field>
+            <field name="amount_python_compute">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.04))</field>
+        </record>
+
+        <record id="hr_rule_total_icbf" model="hr.salary.rule">
+            <field name="name">ICBF</field>
+            <field name="sequence" eval="691"/>
+            <field name="code">1108-2</field>
+            <field name="rule_type">none</field>
+            <field name="account_debit" ref="l10n_co.co_puc_510575"/>
+            <field name="account_credit" ref="l10n_co.co_puc_237010"/>
+            <field name="category_id" ref="hr_payroll_cdc"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+if payslip.date_from.day > 15 or payslip.date_to.day in (28, 29, 30, 31) or payslip.is_liquid == True:
+    if (categories.base_p + previus_bweek) &gt;= (10*employee.company.salario_minimo):
+        result = True
+    else:
+        result = False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.03))</field>
+        </record>
+
+        <record id="hr_rule_total_icbf_ven" model="hr.salary.rule">
+            <field name="name">ICBF</field>
+            <field name="sequence" eval="691"/>
+            <field name="code">1208-2</field>
+            <field name="rule_type">none</field>
+            <field name="account_debit" ref="l10n_co.co_puc_520575"/>
+            <field name="account_credit" ref="l10n_co.co_puc_237010"/>
+            <field name="category_id" ref="hr_payroll_cdc"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+if payslip.date_from.day > 15 or payslip.date_to.day in (28, 29, 30, 31) or payslip.is_liquid == True:
+    if (categories.base_p + previus_bweek) &gt;= (10*employee.company.salario_minimo):
+        result = True
+    else:
+        result = False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.03))</field>
+        </record>
+
+        <record id="hr_rule_total_icbf_ops" model="hr.salary.rule">
+            <field name="name">ICBF</field>
+            <field name="sequence" eval="691"/>
+            <field name="code">1308-2</field>
+            <field name="rule_type">none</field>
+            <field name="account_debit" ref="account_extra.co_puc_720575"/>
+            <field name="account_credit" ref="l10n_co.co_puc_237010"/>
+            <field name="category_id" ref="hr_payroll_cdc"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+if payslip.date_from.day > 15:
+    if (categories.base_p + previus_bweek) &gt;= (10*employee.company.salario_minimo):
+        result = True
+    else:
+        result = False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.03))</field>
+        </record>
+
+        <record id="hr_rule_total_sena" model="hr.salary.rule">
+            <field name="name">SENA</field>
+            <field name="sequence" eval="692"/>
+            <field name="code">1108-3</field>
+            <field name="rule_type">none</field>
+            <field name="account_debit" ref="l10n_co.co_puc_510578"/>
+            <field name="account_credit" ref="l10n_co.co_puc_237010"/>
+            <field name="category_id" ref="hr_payroll_cdc"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+if payslip.date_from.day > 15 or payslip.date_to.day in (28, 29, 30, 31) or payslip.is_liquid == True:
+    if (categories.base_p + previus_bweek) &gt;= (10*employee.company.salario_minimo):
+        result = True
+    else:
+        result = False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.02))</field>
+        </record>
+
+        <record id="hr_rule_total_sena_ven" model="hr.salary.rule">
+            <field name="name">SENA</field>
+            <field name="sequence" eval="692"/>
+            <field name="code">1208-3</field>
+            <field name="rule_type">none</field>
+            <field name="account_debit" ref="l10n_co.co_puc_520578"/>
+            <field name="account_credit" ref="l10n_co.co_puc_237010"/>
+            <field name="category_id" ref="hr_payroll_cdc"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+if payslip.date_from.day > 15:
+    if (categories.base_p + previus_bweek) &gt;= (10*employee.company.salario_minimo):
+        result = True
+    else:
+        result = False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.02))</field>
+        </record>
+
+        <record id="hr_rule_total_sena_ops" model="hr.salary.rule">
+            <field name="name">SENA</field>
+            <field name="sequence" eval="691"/>
+            <field name="code">1308-3</field>
+            <field name="rule_type">none</field>
+            <field name="account_debit" ref="account_extra.co_puc_720578"/>
+            <field name="account_credit" ref="l10n_co.co_puc_237010"/>
+            <field name="category_id" ref="hr_payroll_cdc"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+if payslip.date_from.day > 15 or payslip.date_to.day in (28, 29, 30, 31) or payslip.is_liquid == True:
+    if (categories.base_p + previus_bweek) &gt;= (10*employee.company.salario_minimo):
+        result = True
+    else:
+        result = False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.02))</field>
         </record>
 <!-- provisiones -->
 
@@ -2216,26 +2342,28 @@ else:
         <field name="account_credit" ref="l10n_co.co_puc_237006"/>
         <field name="category_id" ref="hr_payroll_ARL_p"/>
         <field name="condition_select">python</field>
-        <field name="condition_python">if contract.contract_type == "4":
-    if contract.phase == "teaching_phase":
-        result = False
-    elif contract.phase == "practical_phase":
-        result = True
+        <field name="condition_python">if payslip.date_from.day > 15:
+    if contract.contract_type == "4":
+        if contract.phase == "teaching_phase":
+            result = False
+        elif contract.phase == "practical_phase":
+            result = True
+        else:
+            result = True
     else:
-        result = True
-else:
-    result = True</field>
+        result = True</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">if contract.clase_riesgo =="1":
-    result = round(categories.base_p * 0.00522)
+            <field name="amount_python_compute">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+if contract.clase_riesgo =="1":
+    result = round(contract.roundup_cent((categories.base_p + previus_bweek)* 0.00522))
 elif contract.clase_riesgo =="2":
-    result = round(categories.base_p * 0.01044)
+   result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.01044))
 elif contract.clase_riesgo =="3":
-    result = round(categories.base_p * 0.02436)
+   result = round(contract.roundup_cent((categories.base_p + previus_bweek)* 0.02436))
 elif contract.clase_riesgo =="4":
-    result = round(categories.base_p * 0.04350)
+    result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.04350))
 elif contract.clase_riesgo =="5":
-    result = round(categories.base_p * 0.06960)</field>
+    result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.06960))</field>
         </record>
 
 <record id="hr_rule_pro_ARL_ven" model="hr.salary.rule">
@@ -2247,26 +2375,28 @@ elif contract.clase_riesgo =="5":
             <field name="account_credit" ref="l10n_co.co_puc_237006"/>
             <field name="category_id" ref="hr_payroll_ARL_p"/>
             <field name="condition_select">python</field>
-            <field name="condition_python">if contract.contract_type == "4":
-    if contract.phase == "teaching_phase":
-        result = False
-    elif contract.phase == "practical_phase":
-        result = True
+            <field name="condition_python">if payslip.date_from.day > 15 or payslip.date_to.day in (28, 29, 30, 31) or payslip.is_liquid == True:
+    if contract.contract_type == "4":
+        if contract.phase == "teaching_phase":
+            result = False
+        elif contract.phase == "practical_phase":
+            result = True
+        else:
+            result = True
     else:
-        result = True
-else:
-    result = True</field>
+        result = True</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">if contract.clase_riesgo =="1":
-    result = round(categories.base_p * 0.00522)
+            <field name="amount_python_compute">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+if contract.clase_riesgo =="1":
+    result = round(contract.roundup_cent((categories.base_p + previus_bweek)* 0.00522))
 elif contract.clase_riesgo =="2":
-    result = round(categories.base_p * 0.01044)
+   result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.01044))
 elif contract.clase_riesgo =="3":
-    result = round(categories.base_p * 0.02436)
+   result = round(contract.roundup_cent((categories.base_p + previus_bweek)* 0.02436))
 elif contract.clase_riesgo =="4":
-    result = round(categories.base_p * 0.04350)
+    result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.04350))
 elif contract.clase_riesgo =="5":
-    result = round(categories.base_p * 0.06960)</field>
+    result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.06960))</field>
         </record>
 
 <record id="hr_rule_pro_ARL_ops" model="hr.salary.rule">
@@ -2278,26 +2408,28 @@ elif contract.clase_riesgo =="5":
             <field name="account_credit" ref="l10n_co.co_puc_237006"/>
             <field name="category_id" ref="hr_payroll_ARL_p"/>
             <field name="condition_select">python</field>
-            <field name="condition_python">if contract.contract_type == "4":
-    if contract.phase == "teaching_phase":
-        result = False
-    elif contract.phase == "practical_phase":
-        result = True
+            <field name="condition_python">if payslip.date_from.day > 15:
+    if contract.contract_type == "4":
+        if contract.phase == "teaching_phase":
+            result = False
+        elif contract.phase == "practical_phase":
+            result = True
+        else:
+            result = True
     else:
-        result = True
-else:
-    result = True</field>
+        result = True</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">if contract.clase_riesgo =="1":
-    result = round(categories.base_p * 0.00522)
+            <field name="amount_python_compute">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+if contract.clase_riesgo =="1":
+    result = round(contract.roundup_cent((categories.base_p + previus_bweek)* 0.00522))
 elif contract.clase_riesgo =="2":
-    result = round(categories.base_p * 0.01044)
+   result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.01044))
 elif contract.clase_riesgo =="3":
-    result = round(categories.base_p * 0.02436)
+   result = round(contract.roundup_cent((categories.base_p + previus_bweek)* 0.02436))
 elif contract.clase_riesgo =="4":
-    result = round(categories.base_p * 0.04350)
+    result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.04350))
 elif contract.clase_riesgo =="5":
-    result = round(categories.base_p * 0.06960)</field>
+    result = round(contract.roundup_cent((categories.base_p + previus_bweek) * 0.06960))</field>
         </record>
 
 <record id="hr_rule_pro_cesa" model="hr.salary.rule">
@@ -2501,7 +2633,8 @@ result = contract.prov_int_ces(payslip, pcesa)</field>
             <field name="account_credit" ref="l10n_co.co_puc_237005"/>
             <field name="category_id" ref="hr_payroll_sal_emp"/>
             <field name="condition_select">python</field>
-            <field name="condition_python">if contract.contract_type == "4" or contract.wage &gt;= (10*employee.company.salario_minimo):
+            <field name="condition_python">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+if contract.contract_type == "4" or (categories.base_p + previus_bweek) &gt;= (10*employee.company.salario_minimo):
     result = True
 else:
     result = False</field>
@@ -2509,7 +2642,8 @@ else:
             <field name="amount_python_compute">if contract.contract_type == "4":
     result = round(categories.base_p * 0.125)
 else :
-    result = round(categories.base_p * 0.085)</field>
+    previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+    result = round((categories.base_p + previus_bweek) * 0.085)</field>
         </record>
 
 <record id="hr_rule_sal_emp_ven" model="hr.salary.rule">
@@ -2521,7 +2655,8 @@ else :
             <field name="account_credit" ref="l10n_co.co_puc_237005"/>
             <field name="category_id" ref="hr_payroll_sal_emp"/>
             <field name="condition_select">python</field>
-            <field name="condition_python">if contract.contract_type == "4" or contract.wage &gt;= (10*employee.company.salario_minimo):
+            <field name="condition_python">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+if contract.contract_type == "4" or (categories.base_p + previus_bweek) &gt;= (10*employee.company.salario_minimo):
     result = True
 else:
     result = False</field>
@@ -2529,7 +2664,8 @@ else:
             <field name="amount_python_compute">if contract.contract_type == "4":
     result = round(categories.base_p * 0.125)
 else :
-    result = round(categories.base_p * 0.085)</field>
+    previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+    result = round((categories.base_p + previus_bweek) * 0.085)</field>
         </record>
 
 <record id="hr_rule_sal_emp_ops" model="hr.salary.rule">
@@ -2541,7 +2677,8 @@ else :
             <field name="account_credit" ref="l10n_co.co_puc_237005"/>
             <field name="category_id" ref="hr_payroll_sal_emp"/>
             <field name="condition_select">python</field>
-            <field name="condition_python">if contract.contract_type == "4" or contract.wage &gt;= (10*employee.company.salario_minimo):
+            <field name="condition_python">previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+if contract.contract_type == "4" or (categories.base_p + previus_bweek) &gt;= (10*employee.company.salario_minimo):
     result = True
 else:
     result = False</field>
@@ -2549,7 +2686,8 @@ else:
             <field name="amount_python_compute">if contract.contract_type == "4":
     result = round(categories.base_p * 0.125)
 else :
-    result = round(categories.base_p * 0.085)</field>
+    previus_bweek = contract.get_last_biweek(payslip, ["base_p"])
+    result = round((categories.base_p + previus_bweek) * 0.085)</field>
         </record>
 
 <record id="hr_rule_aporte_pension_empresa_adm" model="hr.salary.rule">
@@ -2741,6 +2879,8 @@ else:
 				ref('hr_rule_hora_extra_diurna_festiva_adm'),
 				ref('hr_rule_hora_extra_nocturna_festiva_adm'),
 				ref('hr_rule_total_caja_com_adm'),
+                ref('hr_rule_total_icbf'),
+                ref('hr_rule_total_sena'),
 				ref('hr_rule_pro_prima_adm'),
 				ref('hr_rule_pro_ARL_adm'),
 				ref('hr_rule_pro_incesa_adm'),
@@ -2794,8 +2934,8 @@ else:
         <field name="name">Nomina Ventas</field>
         <field name="parent_id"></field>
         <field eval="[(6, 0, [
-                ref('hr_rule_cesan'),
-				ref('hr_rule_incesan'),						
+                ref('hr_rule_cesan_ven'),
+				ref('hr_rule_incesan_ven'),						
 				ref('hr_rule_SALARIO_ven'),
 				ref('hr_rule_ajuste_sal_ven'),
 				ref('hr_rule_bon_ven'),
@@ -2816,6 +2956,8 @@ else:
 				ref('hr_rule_hora_extra_diurna_festiva_ven'),
 				ref('hr_rule_hora_extra_nocturna_festiva_ven'),
 				ref('hr_rule_total_caja_com_ven'),
+				ref('hr_rule_total_icbf_ven'),
+				ref('hr_rule_total_sena_ven'),
 				ref('hr_rule_pro_prima_ven'),
 				ref('hr_rule_pro_ARL_ven'),
 				ref('hr_rule_pro_incesa_ven'),
@@ -2834,7 +2976,7 @@ else:
 				ref('hr_rule_inca_eps_100'),
 				ref('hr_rule_inca_eps_66'),
                 ref('hr_rule_vac_ven'),
-				ref('hr_rule_Prima_de_ser'),
+				ref('hr_rule_Prima_de_ser_ven'),
 				ref('hr_rule_pro_cesa_ven'),
 				ref('hr_rule_sal'),
 				ref('hr_rule_pen'),
@@ -2864,8 +3006,8 @@ else:
         <field name="name">Nomina Producción</field>
         <field name="parent_id"></field>
         <field eval="[(6, 0, [
-                ref('hr_rule_cesan'),
-				ref('hr_rule_incesan'),							
+                ref('hr_rule_cesan_ops'),
+				ref('hr_rule_incesan_ops'),							
 				ref('hr_rule_SALARIO_ops'),
 				ref('hr_rule_ajuste_sal_ops'),
 				ref('hr_rule_bon_ops'),
@@ -2886,6 +3028,8 @@ else:
 				ref('hr_rule_hora_extra_diurna_festiva_ops'),
 				ref('hr_rule_hora_extra_nocturna_festiva_ops'),
 				ref('hr_rule_total_caja_com_ops'),
+				ref('hr_rule_total_icbf_ops'),
+				ref('hr_rule_total_sena_ops'),
 				ref('hr_rule_pro_prima_ops'),
 				ref('hr_rule_pro_ARL_ops'),
 				ref('hr_rule_pro_incesa_ops'),
@@ -2900,7 +3044,7 @@ else:
 				ref('hr_rule_inca_lut'),
 				ref('hr_rule_inca_eps_100'),
 				ref('hr_rule_inca_eps_66'),
-				ref('hr_rule_Prima_de_ser'),
+				ref('hr_rule_Prima_de_ser_ops'),
                 ref('hr_rule_bono_epctvs_ops'),
                 ref('hr_rule_bono_epctvs_ns_ops'),
                 ref('hr_rule_bono_epctvs_pago_ops'),
@@ -2914,6 +3058,7 @@ else:
 				ref('hr_rule_retefuente'),
                 ref('hr_payslip_pago_teceros'),
 				ref('hr_rule_total_Horas_extras'),
+                ref('hr_rule_total_devengado_liq'),
 				ref('hr_rule_total_devengado'),
 				ref('hr_rule_total_inc'),
                 ref('hr_rule_oded_ops'),

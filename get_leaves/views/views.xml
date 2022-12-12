@@ -32,7 +32,7 @@
           <field name="number_of_days" readonly="1"/>
         </xpath>
         <xpath expr="//field[@name='department_id']" position="after">
-          <field name="type_leave_disease_dian" required="1"/>
+          <field name="type_leave_disease_dian" attrs="{'invisible': [('vacation_bool', '==', True)], 'required': [('vacation_bool', '!=', True)]}"/>
           <field name="check_no_remunerado" attrs="{'invisible': True}"/>
           <field name="check_eps" attrs="{'invisible': True}"/>
           <field name="pago" attrs="{'invisible': True}"/>
@@ -52,7 +52,8 @@
         <xpath expr="//group/group/label[@for='request_date_from']" position="before">
           <field name="employee_id" groups="hr_holidays.group_hr_holidays_user" attrs="{'required': [('holiday_type', '=', 'employee')],                         'invisible': [('holiday_type', '!=', 'employee')]                         }"/>
           <field name="holiday_status_id"/>   
-          <field name="field_bol" readonly = "1" invisible="1"/>     
+          <field name="field_bol" readonly = "1" invisible="1"/> 
+          <field name="vacation_bool" invisible="1"/>
         </xpath>
 
         <xpath expr="//group/group/label[2]" position="before">

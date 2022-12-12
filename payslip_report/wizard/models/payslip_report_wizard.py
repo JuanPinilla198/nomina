@@ -83,7 +83,7 @@ class PayslipReportWizard(models.TransientModel):
                 worksheet.write(row, 0, sr_no, text_center)
                 worksheet.write(row, 1, payslip.number)
                 worksheet.write(row, 2, payslip.employee_id.name)
-                worksheet.write(row, 3, payslip.employee_id.job_id.name or '')
+                worksheet.write(row, 3, payslip.employee_id.job_id.title or '')
                 worksheet.write(row, 4, str(payslip.date_from) + ' - ' + str(payslip.date_to) or '')
                 col = 5
                 for category_id in category_ids:

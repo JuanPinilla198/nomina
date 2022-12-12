@@ -5,77 +5,26 @@
 		<t t-call="web.external_layout">
 			<div class="page" style="border:1px solid black;border-radius: 15px;font-size:15px">			
 				
-				<div style="font-size:21px;font-weight:bold;text-align:center;border-radius: 15px 15px 0px 0px;line-height:45px">
+				<div style="font-weight:bold;text-align:center;border-radius: 15px 15px 0px 0px;border-bottom:1px solid black;line-height:30px">
 					<span name="title">DESPRENDIBLE DE NÓMINA</span>
 				</div>
 	
 				<div>
-				  <div style="border-top:1px solid black;border-bottom:1px solid black;line-height:30px" align="center">
+				  <!--div style="border-top:1px solid black;border-bottom:1px solid black;line-height:30px" align="center">
 					<strong>INFORMACIÓN DEL EMPLEADO</strong>
-				   </div>
-					<table class="table table-sm table-hover">
-						<thead class="thead-light">
+				   </div-->
+					<table class="table table-sm ">
 							<tr>
 								<th>
-									<strong>Nombre del empleado: </strong>
-								</th>
-								<th>
-									<span t-field="o.employee_id"/>
+									<strong>Nombre del empleado: </strong><span t-field="o.employee_id"/>
 								</th>
 								<th name="identification">
 									<strong>No. Doc.: </strong> <span t-field="o.employee_id.identification_id"/>
 								</th>
-								<th>
+								<th class="text-right">
 									<span>Ref.Contrato: </span> <span t-field="o.contract_id.name"/>
 								</th>
-							
 							</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td>
-								<strong>Departamento: </strong>
-							</td>
-							<td>
-								<span t-esc="o.contract_id.department_id.name or o.employee_id.department_id.name"/>
-							</td>
-							<td>
-								<strong>Puesto de trabajo: </strong>
-							</td>
-							<td>
-								<span t-esc="o.contract_id.job_id.name or o.employee_id.job_id.name"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>EPS: </strong>
-							</td>
-							<td>
-								<span t-esc="o.contract_id.eps"/>
-							</td>
-							<td>
-								<strong>Caja de Compensación: </strong>
-							</td>
-							<td>
-								<span t-esc="o.contract_id.caja_compensacion"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>Fecha de Inicio: </strong>
-							</td>
-							<td>
-								<span t-esc="o.contract_id.date_start"/>
-							</td>
-							<td>
-								<strong>Fecha de Finalizacion: </strong>
-							</td>
-							<td>
-								<span t-esc="o.contract_id.date_end"/>
-							</td>
-						</tr>
-						
-						</tbody>
 						</table>
 						
 						<div style="border-top:1px solid black;border-bottom:1px solid black;line-height:30px" align="center">
@@ -126,6 +75,32 @@
 					<td>
 					</td>
 				</tr>
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<table class="table table-sm">
+						<thead class="thead-light">
+							<tr>
+								<th>NOVEDAD</th>
+								<th class="text-center">FECHA INICIAL</th>
+								<th class="text-center">FECHA FINAL</th>
+								<th>CANTIDAD</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr t-foreach="o.leaves_ids" t-as="line_l">
+								<td><span t-field="line_l.holiday_status_id"/></td>
+								<td><span t-field="line_l.date_from"/></td>
+								<td><span t-field="line_l.date_to"/></td>
+								<td class="text-center"><span t-field="line_l.duration_display"/></td>
+							</tr>
+							<tr t-foreach="o.overtime_ids" t-as="line_o">
+								<td><span t-field="line_o.tipo_de_hora_extra"/></td>
+								<td><span t-field="line_o.start_date"/></td>
+								<td><span t-field="line_o.end_date"/></td>
+								<td class="text-center"><span t-field="line_o.num_of_hours"/></td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -193,10 +168,9 @@
 	
 				<div style="width:100%;font-weight:bold;margin-top:40px" name="firma">
 					<p>Firma autorizada: _________________________________</p>
-				</div>
-				
+				</div>				
 			</div>
-			</t>
+		</t>
 	</template>
 
 	<template id="report_custom_payslip_temp">

@@ -23,7 +23,7 @@
 				</div>
 			</xpath>
 					
-			<xpath expr="//table/thead/tr/th/span[@t-field='o.employee_id.identification_id']" position="replace" >
+			<xpath expr="//span[@t-field='o.employee_id.identification_id']" position="replace" >
 				<span t-field="o.employee_id.id_document_payroll"/>
 			</xpath>
 				

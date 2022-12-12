@@ -50,13 +50,13 @@ class my_equipment_request(models.Model):
                                 ('done','Done'),('refuse','Refuse')],string="State",default='new')
     
     tipo_de_hora_extra = fields.Selection([
-		('recargo_nocturno','Recargo nocturno 0,35'),
-		('hora_extra_nocturno','Hora extra nocturna 1,75'),
-		('h_diurna_festiva','Hora diurna festiva 1,75'),
-		('hora_extra_diurna_normal','Hora extra diurno normal 1,25'),
-		('recargo_nocturna_f_d','Hora recargo nocturno dominical y festivo 2,1'),
-		('hora_extra_diurna_festiva','Hora extra diurna domingos y festivo 2'),
-		('trabajo_extra_nocturno_domingos_festivos','Hora extra nocturno en domingos y festivos 2,5'),
+		('hora_extra_diurna_normal','Hora extra diurno normal 25%'),
+		('hora_extra_nocturno','Hora extra nocturna 75%'),
+		('recargo_nocturno','Recargo nocturno 35%'),
+		('hora_extra_diurna_festiva','Hora extra diurna domingos y festivo 100%'),
+		('h_diurna_festiva','Hora recargo diurna festiva 75%'),
+		('trabajo_extra_nocturno_domingos_festivos','Hora extra nocturno en domingos y festivos 150%'),
+		('recargo_nocturna_f_d','Hora recargo nocturno dominical y festivo 110%'),
 		#('recargo_nocturno_festivo','Recargo nocturno festivo 1,1'),
 		#('trabajo_extra_nocturno_domingos_festivos','Hora extra nocturno en domingos y festivos 2,5'),
 		#('trabajo_dominical_festivo','Hora extra diurna domingos y festivo 2'),

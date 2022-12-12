@@ -157,6 +157,7 @@ class PayslipLeave(models.Model):
     check_eps = fields.Boolean(string="EPS 100%")
     check_no_remunerado = fields.Boolean(string="Incluir domingo")
     field_bol = fields.Boolean()
+    vacation_bool = fields.Boolean()
     @api.onchange('holiday_status_id')
     def check_sunday(self):
         if self.holiday_status_id.name == 'AUSENCIA_NO_REMUNERADO':
